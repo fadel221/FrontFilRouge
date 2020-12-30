@@ -1,0 +1,48 @@
+<mat-toolbar style="background-color:#000080;color:white">
+
+  <button (click)="SidenavActions()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Fil Rouge</span>
+  <span class="material-icons" style="position: relative;left: 20px;"> 
+    group
+    </span>
+  <button style="position: relative;left: 7px;" mat-button [matMenuTriggerFor]="admin">Admin</button>
+  
+<mat-menu #admin="matMenu">
+  <button mat-menu-item routerLink="user" >user</button>
+  <button mat-menu-item routerLink="profil">profil</button>
+</mat-menu>
+  
+  
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <span class="material-icons" style="position: relative;left: 10px;"> 
+    settings
+    </span>
+ <span style="font-size: 15px;left: 10px;position: relative;"> Parametres</span>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="promos">
+    <span>Promos</span>
+  </button>
+  <button mat-menu-item routerLink="referentiels/add">
+    <span>Referentiel</span>
+  </button>
+  <button mat-menu-item routerLink="competences">
+    <span>Competences</span>
+  </button>
+  <button mat-menu-item routerLink="grpecompetences">
+    <span>GroupeCompetences</span>
+  </button>
+  <button mat-menu-item routerLink="profilsorties">
+    <span>Profilsortie</span>
+  </button>
+</mat-menu>
+<span class="example-spacer" style="background-color: red;"></span>
+<button routerLink="auth" mat-icon-button class="white-icon">
+  <mat-icon>exit_to_app</mat-icon>
+</button>
+</mat-toolbar>
+
+  <router-outlet></router-outlet>
+

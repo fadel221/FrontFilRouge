@@ -1,0 +1,43 @@
+<div id="container-login">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title" style="color:#000080;position: relative;bottom: 40px;">
+                    FIL ROUGE LOGIN
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form #f="ngForm">
+                            <div class="form-group">
+                                <label class="form-control-label" style="color:#000080;">USERNAME</label>
+                                <input required type="text" class="form-control" name="username" #username="ngModel" ngModel>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" style="color:#000080;">PASSWORD</label>
+                                <input required type="password" class="form-control" i name="password" #password="ngModel" ngModel>
+                            </div>
+
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+

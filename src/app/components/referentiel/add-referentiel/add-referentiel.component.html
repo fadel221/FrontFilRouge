@@ -1,0 +1,48 @@
+<div class="container-competence">
+  <div class="header-competence">NEW REFERENTIEL</div>
+<div>
+  <div class="container-form-competence">
+<mat-form-field>
+    <mat-label>Libelle</mat-label>
+    <input matInput>
+</mat-form-field>
+</div>
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Presentation</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</div>
+<div>
+<mat-tab-group animationDuration="500ms" style="width:90%;margin:auto">
+    <mat-tab label="Critéres d'évaluations">
+
+          <mat-form-field class="example-full-width">
+            
+            <textarea matInput placeholder="Critéres d'évaluations"></textarea>
+          </mat-form-field>
+    </mat-tab>
+    <mat-tab label="Critéres d'admission">
+        
+
+          <mat-form-field class="example-full-width">
+            
+            <textarea matInput placeholder="Critéres d'admission"></textarea>
+          </mat-form-field>
+    </mat-tab>
+      </mat-tab-group>
+      <div>
+        <p>
+          <mat-form-field>
+          <ngx-mat-file-input name="programme" ngModel #programme placeholder="Programme" ></ngx-mat-file-input>
+          <mat-icon matSuffix>folder</mat-icon>
+          </mat-form-field>
+          </p>
+      </div>
+  <div class="col-lg-6 login-btm login-button">
+    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+</div>
+</div>
+</div>
+</div>
+  

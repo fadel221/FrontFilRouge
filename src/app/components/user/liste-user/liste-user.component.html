@@ -1,0 +1,77 @@
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style=" background-color:white; top:40px;position: relative;"> 
+    <!--- Note that these columns can be defined in any order. The actual rendered columns are set as a property on the row definition" --> 
+    <!-- Position Column --> 
+
+    
+
+    <ng-container matColumnDef="username"> 
+    <th id="id" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Username
+    </th> 
+    <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.username}} 
+    </td> 
+    </ng-container> 
+
+    <ng-container matColumnDef="avatar"> 
+        <th id="id" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080;"> Avatar
+        </th> 
+        <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080;background-size: 10%;"><img width="80" height="80" style="border-radius: 20px;" src="{{'data:image/jpg;base64,'+ user.avatar}}" alt="avatar">
+        </td> 
+    </ng-container>
+    <!-- Name Column --> 
+    <ng-container matColumnDef="prenom"> 
+    <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Prenom
+    </th> 
+    <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.prenom}} 
+    </td> 
+    </ng-container> 
+
+    <!-- Name Column --> 
+    <ng-container matColumnDef="nom"> 
+        <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Nom
+        </th> 
+        <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.nom}} 
+        </td> 
+        </ng-container>
+        
+        <ng-container matColumnDef="email"> 
+            <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Email
+            </th> 
+            <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.email}} 
+            </td> 
+            </ng-container>
+
+    <ng-container matColumnDef="action">
+        
+        <mat-header-cell  *matHeaderCellDef style="font-size:18px;color:#000080 ;position: relative;top: 30px;"><button #addUser (click)=AddUser() mat-button color="accent"><mat-icon>add</mat-icon></button>
+      </mat-header-cell>
+        <mat-cell *matCellDef="let profil" style="position: relative;top: 30px">
+        
+            <button  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <span class="material-icons" style="color: deeppink;">
+                    visibility
+                </span>
+              </button>
+              <button  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <span class="material-icons" style="color: deeppink;">
+                    edit
+                </span>
+              </button>
+              <button   mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                <span class="material-icons" style="color: deeppink;">
+                    delete
+                </span>
+              </button>
+        </mat-cell>
+      </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns">
+    </tr> 
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr> 
+    
+    </table>
+     
+    
+   
+  

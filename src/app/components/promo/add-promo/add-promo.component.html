@@ -1,0 +1,104 @@
+<div class="container-competence">
+    <div class="header-competence">NEW PROMO</div>
+  <div>
+    <div class="container-form-competence">
+    
+  <mat-form-field>
+      <mat-label>Langue</mat-label>
+      <input matInput>
+  </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+        <mat-label>Titre</mat-label>
+        <input matInput>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Description de la promo</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+  <mat-tab-group animationDuration="500ms" style="width:90%;margin:auto">
+      <mat-tab label="Lieu de la Promo">
+  
+            <mat-form-field class="example-full-width">
+              
+              <input matInput placeholder="Lieu de la Promo">
+            </mat-form-field>
+      </mat-tab>
+      <mat-tab label="Reference Agate">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Reference Agate">
+            </mat-form-field>
+      </mat-tab>
+
+      <mat-tab label="Choix de la Fabrique">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Choix de la Fabrique">
+        </mat-form-field>
+  </mat-tab>
+        </mat-tab-group>
+        <div>
+    
+  <mat-form-field class="example-chip-list">
+    <mat-label>Réferentiels</mat-label>
+    <mat-chip-list #chipList aria-label="Réferentiels">
+      <mat-chip
+        *ngFor="let fruit of fruits"
+        [selectable]="selectable"
+        [removable]="removable"
+        (removed)="remove(fruit)">
+        {{fruit}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input
+        placeholder="New Référentiel..."
+        #fruitInput
+        [formControl]="fruitCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+        {{fruit}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+        <div>
+          <p>
+            <mat-form-field>
+            <ngx-mat-file-input name="avatar" ngModel #avatar placeholder="avatar" ></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+            </p>
+        </div>
+        <mat-tab-group animationDuration="500ms" style="width:90%;margin:auto">
+            <mat-tab label="Date de Début">      
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>  
+        </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Date de Fin">
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>  
+        </mat-form-field>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="col-lg-6 login-btm login-button">
+      <button style="color:white;background-color:#000080;margin: auto;position: relative;bottom:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+  </div>
+  </div>
+  </div>
+  </div>
+    
