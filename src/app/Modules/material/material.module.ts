@@ -19,6 +19,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginator } from '@angular/material/paginator';
+import {MatStepperModule} from '@angular/material/stepper'
 const MaterialComponents=
 [
   MatButtonModule,
@@ -40,6 +41,7 @@ const MaterialComponents=
   MatAutocompleteModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatStepperModule
 ]
 
 @NgModule({

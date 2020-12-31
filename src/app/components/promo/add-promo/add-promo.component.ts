@@ -6,10 +6,14 @@ import {MatAutocompleteSelectedEvent, MatAutocomplete} from '@angular/material/a
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 @Component({
   selector: 'app-add-promo',
   templateUrl: './add-promo.component.html',
-  styleUrls: ['./add-promo.component.css']
+  styleUrls: ['./add-promo.component.css'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+  }]
 })
 export class AddPromoComponent implements OnInit {
 
@@ -20,14 +24,14 @@ export class AddPromoComponent implements OnInit {
   fruitCtrl = new FormControl();
   filteredFruits: Observable<string[]>;
   fruits: string[]= ['Développeur web/mobile','Data Artisan','Référent Digital'];
-
+  emails:string []=['gueyefadel22@gmail.com','douvewane@gmail.com','pascal32@yahoo.fr']
   @ViewChild('fruitInput') fruitInput: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
 
   constructor() {
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
         startWith(null),
-        map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+        map((fruit: string | null) => fruit ? this._filter(fruit) : this.fruits.slice()));
   }
 
   add(event: MatChipInputEvent): void {
@@ -64,8 +68,9 @@ export class AddPromoComponent implements OnInit {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.allFruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
+    return this.fruits.filter(fruit => fruit.toLowerCase().indexOf(filterValue) === 0);
   }
+  
 
   ngOnInit(): void {
   }

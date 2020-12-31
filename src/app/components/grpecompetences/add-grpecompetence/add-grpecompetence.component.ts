@@ -12,6 +12,11 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./add-grpecompetence.component.css']
 })
 export class AddGrpecompetenceComponent implements OnInit {
+hide=false
+Hide()
+{
+  this.hide=!this.hide
+}
 ngOnInit(){
 }
   visible = true;

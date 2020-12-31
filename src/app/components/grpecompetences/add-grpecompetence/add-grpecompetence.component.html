@@ -1,4 +1,4 @@
-<div class="container-competence">
+<div class="container-competence" style="background: white;">
     <div class="header-competence">NEW GROUPE DE COMPETENCES</div>
   <div>
     <div class="container-form-competence">
@@ -43,15 +43,16 @@
   <div>
     <div class="card">
       <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
+        <h5 class="mb-0" style="color: #000080">
           
-          <button mat-icon-button  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" aria-label="Example icon-button with menu icon">
-            <mat-icon>add</mat-icon> New Competence
-            </button>
+          <button  (click)="Hide()" mat-icon-button  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" aria-label="Example icon-button with menu icon">
+            <mat-icon >add</mat-icon> New Competence
+          </button>
+          
         </h5>
       </div>
   
-      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
         
         <div>
           <div class="container-form-competence">
@@ -100,15 +101,15 @@
           
         </div>
         </div>
-
+        <button  style="color:white;background-color:#000080;margin: auto;position: relative; left:600px;bottom: 10px;"  class="btn btn-outline-primary">SUBMIT</button>
       </div>
     </div>
   </div>
 </div>
   
   
-    <div class="col-lg-6 login-btm login-button">
-      <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:300px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+    <div class="col-lg-6 login-btm login-button ">
+      <button  *ngIf="!hide" style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:600px;" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
   </div>
   </div>
   </div>

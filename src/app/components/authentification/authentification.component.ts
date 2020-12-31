@@ -23,7 +23,7 @@ login(credentials :any)
       const token= response.token;
       console.log(token)
       localStorage.setItem('token',token);
-      this.router.navigate(['home']);
+      this.router.navigate(['user']);
     },
     (error: any) =>
     {
