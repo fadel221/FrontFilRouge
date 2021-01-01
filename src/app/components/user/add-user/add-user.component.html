@@ -6,35 +6,34 @@
                 <h2 class="title">New User</h2>
             </div>
             <div class="card-body" style="height:700px;width:90%;position: relative;bottom: 54px;">
-                <form class="form-group" [form-group]="UserForm" enctype="multipart/form-data" (ngSubmit)="AddUser(Userform)">
+                <form #f="ngForm"  enctype="multipart/form-data">
+
                     <div class="form-row">
                         <div class="name">Username</div>
                         <div class="value">
-                            <input class="input--style-6" [formControlName]="'username'" type="text" name="username">
-                            <small *ngIf="!UserForm.get('username').sale " style="color:red">
-                                Please enter a valid username
-                            </small>
+
+                            <input class="input--style-6"  type="text" name="username" #user="ngModel" ngModel>
+                            
                         </div>
                         
                     </div>
                     <div class="form-row">
                         <div class="name">Firstname</div>
                         <div class="value">
-                            <input class="input--style-6" [formControlName]="'firstname'" type="text" name="firstname">
+                            <input class="input--style-6" name="firstname"  type="text" #first="ngModel" ngModel>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="name">Lastname</div>
                         <div class="value">
-                            <input class="input--style-6" type="text" name="lastname" [formControlName]="'lastname'">
+                            <input class="input--style-6" name="lastname" type="text" #last="ngModel" ngModel>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="name">Email address</div>
                         <div class="value">
                             <div class="input-group">
-                                <input class="input--style-6" type="email" name="email" placeholder="example@email.com" [formControlName]="'email'">
-                            </div>
+                                <input class="input--style-6" name="email" type="email"  placeholder="example@email.com" #email="ngModel" ngModel>                            </div>
                         </div>
                     </div>
 
@@ -42,11 +41,9 @@
                         <div class="name">Profil</div>
                         <div class="value">
                             <div class="input-group">
-                                <select class="input--style-6"  name="profil" [formControlName]="'profil'" >
-                                    <option>ADMIN</option>
-                                    <option>FORMATEUR</option>
-                                    <option>APPRENANT</option>
-                                    <option>CM</option>
+                                <select class="input--style-6" name="profil"  #profil="ngModel" ngModel>
+                                    <option value=""></option>
+                                    <option *ngFor="let profil of profils" [value]="profil.id">{{profil.libelle}}</option>
                                 </select>
                             </div>
                         </div>
@@ -57,22 +54,23 @@
                         <div class="name">Upload Avatar</div>
                         <div class="value">
                             <div class="input-group js-input-file">
-                                <input type="file" (change)="selectedFile($event.target.files,$event)"  name="file_cv" [formControlName]="'file'">
-                                <label class="label--file" for="file">Choose file</label>
+                                <input type="file" name="file_cv" (change)="selectedFile($event.target.files,$event)" #file="ngModel" ngModel>
+                               <label class="label--file" for="file">Choose file</label>
                                 <span class="input-file__info">No file chosen</span>
                             </div>
                             <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
                         </div>
                         <div>
-                        <img [src]="url" width="100" height="100" alt="avatra">
+                        <img [src]="url" width="100" height="100" name="avatar" alt="avatar">
                     </div>
                 </div>
-                <button (click)="addUser(f.value)" class="btn btn--radius-2 btn--blue-2" type="submit">Submit</button>
-                </form>
+                <button  style="position: relative;left:690px;bottom: 60px;" (click)="addUser(f.value)" class="btn btn--radius-2 btn--blue-2">Submit</button>
+               
+            </form>
 
-                
             </div>
             
         </div>
     </div>
 </div>
+<router-outlet></router-outlet>
