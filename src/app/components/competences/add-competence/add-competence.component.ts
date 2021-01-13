@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CompetencesService } from 'src/app/Services/competences.service';
+import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
 /**
  * @title Tab group animations
  */
@@ -10,43 +12,84 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AddCompetenceComponent implements OnInit {
 
-  
-  groupecmps = [
-    {
-      "id":1,
-      "libelle":"Developper le back-end d'une appli"
-    },
-    {
-      "id":2,
-      "libelle":"Réaliser un site web avec wordPress"
-    },
-    {
-      "id":3,
-      "libelle":"Developper le fron-end d'une appli"
-    }
-  ]
-
-  constructor(
     
-  ) { }
+  
+  FormCompetence:FormGroup
+  NiveauxForm:FormGroup
+  newCompetence={}
+
+  constructor(private _grpservice:GrpcompetencesService,private fb:FormBuilder,private _competenceserv:CompetencesService) { }
 
   ngOnInit(): void {
+    this._grpservice.getGrpeCompetence().subscribe(
+      (response:any)=>
+      {
+        console.log(this.groupecmps=response["hydra:member"]);
+      }
+    )
+     this.FormCompetence=this.fb.group({
+      libelle:[""],
+      groupecompetence: [""]
+    })
+   this.NiveauxForm= this.fb.group({
+      groupeaction1:[""],
+      critereEvaluation1:[""],    
+      criterePerformance1:[""], 
+      groupeaction2:[""],
+      critereEvaluation2:[""],    
+      criterePerformance2:[""],  
+      groupeaction3:[""],
+      critereEvaluation3:[""],    
+      criterePerformance3:[""],  
+       
     
-    };
+    })
+      
+    }
+
+    add(input:any,input2:any)
+    {
+      console.log(input,input2)
+      console.log(this.niveaux)
+      this.newCompetence=
+      {
+        libelle:this.FormCompetence.get('libelle')?.value,
+        groupecompetence:
+        [
+            {
+              "id":this.FormCompetence.get('groupecompetence')?.value
+            }
+        ],
+        "niveau":
+        this.niveaux
+    }
+    console.log(this.newCompetence)
+      this._competenceserv.AddCompetence(this.newCompetence).subscribe(
+        (response:any)=>
+        {
+            console.log(response)
+        }
+      )
+    }
   
    niveaux:any[] = [
     {
-      "grpAction":"consectetur adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet,  tempor incididunt ut labore et dolore magna aliqua",
-      "critereEval":"Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+      groupeaction:"",
+      critereEvaluation:"",    
+      criterePerformance:"", 
     },
     {
-      "grpAction":"Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "critereEval":"Consectetur adipiscing elit. Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+      groupeaction:"",
+      critereEvaluation:"",    
+      criterePerformance:"", 
     },
     {
-      "grpAction":"Adipiscing elit, sed do eiusmod. Lorem ipsum dolor sit amet, consectetur  tempor incididunt ut labore et dolore magna aliqua",
-      "critereEval":"Eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
+      groupeaction:"",
+      critereEvaluation:"",    
+      criterePerformance:"", 
     }
+    
+    
   ]
   
 

@@ -1,25 +1,52 @@
 <div class="container-competence">
   <div class="header-competence">NEW REFERENTIEL</div>
-<div>
+
   <div class="container-form-competence">
+    <form [formGroup]="FormReferentiel">
 <mat-form-field>
     <mat-label>Libelle</mat-label>
-    <input matInput>
+    <input matInput formControlName="libelle">
 </mat-form-field>
-</div>
-<div>
+<mat-form-field class="example-chip-list">
+  <mat-label>Groupe de Competences...</mat-label>
+  <mat-chip-list #chipList aria-label="Groupe de Competences...">
+    <mat-chip
+      *ngFor="let fruit of fruits"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(fruit)"
+      >
+      {{fruit.libelle}}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input formControlName="groupecompetence_array"
+      placeholder="New Groupe de Competences..."
+      #fruitInput
+      [formControl]="FormReferentiel"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit.id">
+      {{fruit.libelle}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
   <mat-form-field class="example-full-width">
     <mat-label>Presentation</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    <textarea matInput formControlName="presentation" placeholder="Ex. It makes me feel..."></textarea>
   </mat-form-field>
-</div>
-<div>
+
+
 <mat-tab-group animationDuration="500ms" style="width:90%;margin:auto">
     <mat-tab label="Critéres d'évaluations">
 
           <mat-form-field class="example-full-width">
             
-            <textarea matInput placeholder="Critéres d'évaluations"></textarea>
+            <textarea formControlName="critereEvaluation" matInput placeholder="Critéres d'évaluations"></textarea>
           </mat-form-field>
     </mat-tab>
     <mat-tab label="Critéres d'admission">
@@ -27,21 +54,21 @@
 
           <mat-form-field class="example-full-width">
             
-            <textarea matInput placeholder="Critéres d'admission"></textarea>
+            <textarea formControlName="critereAdmission" matInput placeholder="Critéres d'admission"></textarea>
           </mat-form-field>
     </mat-tab>
       </mat-tab-group>
-      <div>
+      
         <p>
           <mat-form-field>
-          <ngx-mat-file-input name="programme" ngModel #programme placeholder="Programme" ></ngx-mat-file-input>
+          <ngx-mat-file-input formControlName="programme" name="programme" ngModel #programme placeholder="Programme" ></ngx-mat-file-input>
           <mat-icon matSuffix>folder</mat-icon>
           </mat-form-field>
           </p>
-      </div>
+        </form>
+      
   <div class="col-lg-6 login-btm login-button">
-    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
-</div>
+    <button (click)="addReferentiel(FormReferentiel.value)" [disabled]="FormReferentiel.invalid" style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px"  class="btn btn-outline-primary">SUBMIT</button>
 </div>
 </div>
 </div>

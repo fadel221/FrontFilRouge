@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaChange } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
+
+import { ConnexionService } from 'src/app/Services/connexion.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,28 +10,16 @@ import { Subscription } from 'rxjs';
 export class MenuComponent implements OnInit {
 opened = false;
   
-  // overlap = false;
-
-  //watcher: Subscription;
-
-  constructor()//media:ObservableMedia) {
-    {}
-   /* this.watcher = media.subscribe((change: MediaChange) => {
-      if (change.mqAlias === 'sm' || change.mqAlias === 'xs') {
-        this.opened = false;
-        this.over = 'over';
-      } else {
-        this.opened = true;
-        this.over = 'side';
-      }
-    }*/
-  
-    SidenavActions()
+  constructor(private _con:ConnexionService)
     {
-      this.opened=!this.opened
-    }
 
+    }
+   
   ngOnInit(): void {
+  }
+  logout()
+  {
+    this._con.logout();
   }
 
 }

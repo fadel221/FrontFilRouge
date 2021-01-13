@@ -54,7 +54,7 @@
                         <div class="name">Upload Avatar</div>
                         <div class="value">
                             <div class="input-group js-input-file">
-                                <input type="file" name="file_cv" (change)="selectedFile($event.target.files,$event)" #file="ngModel" ngModel>
+                                <input type=  "file" name="file" (change)="selectedFile($event.target.files,$event)" #file="ngModel" ngModel>
                                <label class="label--file" for="file">Choose file</label>
                                 <span class="input-file__info">No file chosen</span>
                             </div>
@@ -73,4 +73,4 @@
         </div>
     </div>
 </div>
-<router-outlet></router-outlet>
+

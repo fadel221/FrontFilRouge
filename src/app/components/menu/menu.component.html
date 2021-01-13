@@ -39,10 +39,10 @@
   </button>
 </mat-menu>
 <span class="example-spacer" style="background-color: red;"></span>
-<button routerLink="auth" mat-icon-button class="white-icon">
+<span style="font-size: 20px;right:5px;position: relative;">Déconnexion</span>
+<button (click)="logout()" mat-icon-button class="white-icon">
   <mat-icon>exit_to_app</mat-icon>
 </button>
 </mat-toolbar>
-
-  <router-outlet></router-outlet>
-
+<router-outlet></router-outlet>
+  

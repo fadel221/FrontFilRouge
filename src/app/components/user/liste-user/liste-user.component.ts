@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
-import { User } from 'src/app/entity/user';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -9,8 +9,10 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./liste-user.component.css']
 })
 export class ListeUserComponent implements OnInit {
-  dataSource:User[]=[];
+  dataSource:any;
+  length:any
   displayedColumns=['avatar','username','prenom','nom','email','action'];
+  @ViewChild (MatPaginator) paginator:MatPaginator
   constructor(private service:UserService,private router:Router) 
   { }
 
@@ -19,14 +21,32 @@ export class ListeUserComponent implements OnInit {
       (response:any)=>
       {
           this.dataSource=response["hydra:member"]
+          this.dataSource.paginator=this.paginator
           console.log(this.dataSource);
+          this.service.getCountUser().subscribe(
+            (success:any)=>{
+              this.length=success["nbre_user"];
+              console.log(this.length)
+            }
+          )
       }
     )
   }
 
+  
   AddUser()
   {
     this.router.navigate(["user/add"])
   }
+
+  ArchiveUser(id:any)
+  {
+    console.log (id)
+  }
+
+  
+  
+    
+  
 
 }

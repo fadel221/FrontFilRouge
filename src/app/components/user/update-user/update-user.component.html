@@ -1,1 +1,73 @@
-<p>update-user works!</p>
+
+<div class="page-wrapper  p-t-100 p-b-50" style="position:relative;bottom:50px;">
+    <div class="wrapper wrapper--w900">
+        <div class="card card-6">
+            <div class="card-heading" style="color: #000080;">
+                <h2 class="title">New User</h2>
+            </div>
+            <div class="card-body" style="height:700px;width:90%;position: relative;bottom: 54px;">
+                <form #f="ngForm"  enctype="multipart/form-data">
+
+                    <div class="form-row">
+                        <div class="name">Username</div>
+                        <div class="value">
+
+                            <input class="input--style-6" ngModel="{{data.username}}"  type="text" name="username" #user="ngModel" >
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Firstname</div>
+                        <div class="value">
+                            <input class="input--style-6" ngModel="{{data.prenom}}" name="firstname"  type="text" #first="ngModel" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Lastname</div>
+                        <div class="value">
+                            <input class="input--style-6" name="lastname" ngModel="{{data.nom}}" type="text" #last="ngModel" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Email address</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <input class="input--style-6" ngModel="{{data.email}} "name="email" type="email"  placeholder="example@email.com" #email="ngModel" >                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Profil</div>
+                        <div class="value">
+                            <div class="input-group">
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-row">
+                        <div class="name">Upload Avatar</div>
+                        <div class="value">
+                            <div class="input-group js-input-file">
+                                <input type=  "file" name="avatar" (change)="selectedFile($event.target.files,$event)" #avatar="ngModel" ngModel>
+                               <label class="label--file" for="file">Choose file</label>
+                                <span class="input-file__info">No file chosen</span>
+                            </div>
+                            <div class="label--desc">Upload your CV/Resume or any other relevant file. Max file size 50 MB</div>
+                        </div>
+                        <div>
+                        <img [src]="url" width="100" height="100" name="avatar" alt="avatar">
+                    </div>
+                </div>
+                <button (click)="UpdateUser(f.value)" style="position: relative;left:690px;bottom: 60px;"  class="btn btn--radius-2 btn--blue-2">Submit</button>
+               
+            </form>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+

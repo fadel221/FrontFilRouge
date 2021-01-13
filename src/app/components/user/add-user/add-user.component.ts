@@ -13,8 +13,8 @@ import { UserService } from 'src/app/Services/user.service';
 export class AddUserComponent implements OnInit {
   url="./assets/images/background.jpg";
   avatar:any
-  UserForm:FormGroup;
-  profils:Profil[];
+  //UserForm:FormGroup;
+  profils:Profil[]=[];
   ngOnInit(): void {
 
 
@@ -35,7 +35,7 @@ export class AddUserComponent implements OnInit {
           this.profils=response["hydra:member"];
         }
       )
-    console.log (this.UserForm)
+    //console.log (this.UserForm)
   }
   addUser (data:any)
   {
@@ -45,8 +45,8 @@ export class AddUserComponent implements OnInit {
     formdata.append('nom',data.lastname)
     formdata.append('email',data.email)
     formdata.append('profil_id',data.profil);
-    formdata.append('avatar', this.avatar, this.avatar.name);
-    formdata.append('password','1234')
+    formdata.append('avatar', this.avatar,this.avatar.name);
+    formdata.append('password','1234');
     this.userservice.AddUser(formdata).subscribe(
       (response)=>
       {

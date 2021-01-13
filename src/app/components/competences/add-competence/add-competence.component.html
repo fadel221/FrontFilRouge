@@ -3,58 +3,83 @@
   <div class="header-competence">NEW COMPETENCE</div>
 <div>
   <div class="container-form-competence">
+    <form [formGroup]="FormCompetence">
 <mat-form-field>
     <mat-label>Libelle</mat-label>
-    <input matInput>
+    <input matInput formControlName="libelle">
 </mat-form-field>
-</div>
-<div>
+
 <mat-form-field appearance="fill">
     <mat-label>Groupe de Competence</mat-label>
-    <mat-select>
+    <mat-select formControlName="groupecompetence">
        
-      <mat-option *ngFor="let groupecmp of groupecmps" value={{groupecmp.libelle}}>{{groupecmp.libelle}}</mat-option>
+      <mat-option  *ngFor="let groupecmp of groupecmps" value={{groupecmp.id}}>{{groupecmp.libelle}}</mat-option>
     </mat-select>
   </mat-form-field>
-</div>
-<div>
-<mat-tab-group animationDuration="500ms" style="width:90%;margin:auto">
+
+</form>
+<form [formGroup]="NiveauxForm">
+<mat-tab-group  animationDuration="500ms" style="width:90%;margin:auto">
     <mat-tab label="Niveau 1">
-        <mat-form-field class="example-full-width">
+
+        <mat-form-field  class="example-full-width">
             <mat-label>Groupe d'actions à réaliser</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[0].groupeaction" formControlName="groupeaction1" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
             <mat-label>Critéres d'Evaluations</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[0].critereEvaluation" formControlName="critereEvaluation1"    placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Critéres de Performance</mat-label>
+            <textarea matInput [(ngModel)]="niveaux[0].criterePerformance" formControlName="criterePerformance1" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
     </mat-tab>
+    
     <mat-tab label="Niveau 2">
+
+      
+
         <mat-form-field class="example-full-width">
             <mat-label>Groupe d'actions à réaliser</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[1].groupeaction" formControlName="groupeaction2" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
 
-          <mat-form-field class="example-full-width">
+          <mat-form-field  class="example-full-width">
             <mat-label>Critéres d'Evaluations</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[1].critereEvaluation" formControlName="critereEvaluation2" placeholder="Ex. It makes me feel..."></textarea>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Critéres de Performance</mat-label>
+            <textarea matInput [(ngModel)]="niveaux[1].criterePerformance" formControlName="criterePerformance2" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
     </mat-tab>
     <mat-tab label="Niveau 3">
+
+      
+
         <mat-form-field class="example-full-width">
             <mat-label>Groupe d'actions à réaliser</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[2].groupeaction" formControlName="groupeaction3" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
             <mat-label>Critéres d'Evaluations</mat-label>
-            <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+            <textarea matInput [(ngModel)]="niveaux[2].critereEvaluation" formControlName="critereEvaluation3" placeholder="Ex. It makes me feel..."></textarea>
           </mat-form-field>
+          <mat-form-field class="example-full-width">
+      <mat-label>Critéres de Performance</mat-label>
+      <textarea matInput [(ngModel)]="niveaux[2].criterePerformance" formControlName="criterePerformance3" placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+        
+    
     </mat-tab>
   </mat-tab-group>
+</form>
   <div class="col-lg-6 login-btm login-button">
-    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="add(FormCompetence.value,NiveauxForm.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
 </div>
 </div>
 </div>

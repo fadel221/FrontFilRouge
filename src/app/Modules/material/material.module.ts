@@ -18,8 +18,9 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatPaginator } from '@angular/material/paginator';
-import {MatStepperModule} from '@angular/material/stepper'
+import {MatPaginatorModule } from '@angular/material/paginator';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatSortModule } from '@angular/material/sort';
 const MaterialComponents=
 [
   MatButtonModule,
@@ -41,7 +42,9 @@ const MaterialComponents=
   MatAutocompleteModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatStepperModule
+  MatStepperModule,
+  MatPaginatorModule,
+  MatSortModule
 ]
 
 @NgModule({

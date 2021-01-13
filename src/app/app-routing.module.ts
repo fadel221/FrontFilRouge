@@ -13,11 +13,15 @@ import { AddPromoComponent } from './components/promo/add-promo/add-promo.compon
 import { AddReferentielComponent } from './components/referentiel/add-referentiel/add-referentiel.component';
 import { ListReferentielComponent } from './components/referentiel/list-referentiel/list-referentiel.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
+import { ArchiveUserComponent } from './components/user/archive-user/archive-user.component';
+import { DetailUserComponent } from './components/user/detail-user/detail-user.component';
 import { ListeUserComponent } from './components/user/liste-user/liste-user.component';
+import { UpdateUserComponent } from './components/user/update-user/update-user.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'home', component: HomeComponent
+    path: 'home', component: HomeComponent,canActivate:[AuthGuard]
   },
   {
     path:'auth',component:AuthentificationComponent
@@ -26,40 +30,54 @@ const routes: Routes = [
     path:'',component:AuthentificationComponent
   },
   {
-    path:'user' ,component:ListeUserComponent
+    path:'user' ,children:
+    [
+        {
+          path:'',component:ListeUserComponent,canActivate:[AuthGuard]
+        },
+        {
+          path:"add",component:AddUserComponent,canActivate:[AuthGuard]
+        },
+        {
+          path:'detail/:id',component:DetailUserComponent,canActivate:[AuthGuard]
+        },
+        {
+          path:'update/:id',component:UpdateUserComponent,canActivate:[AuthGuard]
+        },
+        {
+          path:'archive/:id',component:ArchiveUserComponent,canActivate:[AuthGuard]
+        }
+    ]
+},
+  {
+    path:'profil',component:ListProfilComponent,canActivate:[AuthGuard]
   },
   {
-    path:"user/add",component:AddUserComponent
+    path:'profilsorties',component:ListProfilsortieComponent,canActivate:[AuthGuard]
   },
   {
-    path:'profil',component:ListProfilComponent
+    path:'promos',component:AddPromoComponent,canActivate:[AuthGuard]
   },
   {
-    path:'profilsorties',component:ListProfilsortieComponent
+    path:'referentiels',component:ListReferentielComponent,canActivate:[AuthGuard]
   },
   {
-    path:'promos',component:AddPromoComponent
+    path:'referentiels/add',component:AddReferentielComponent,canActivate:[AuthGuard]
   },
   {
-    path:'referentiels',component:ListReferentielComponent
+    path:'competences',component:ListCompetenceComponent,canActivate:[AuthGuard]
   },
   {
-    path:'referentiels/add',component:AddReferentielComponent
+    path:'competences/add',component:AddCompetenceComponent,canActivate:[AuthGuard]
   },
   {
-    path:'competences',component:ListCompetenceComponent
+    path:'grpecompetences',component:AddGrpecompetenceComponent,canActivate:[AuthGuard]
   },
   {
-    path:'competences/add',component:AddCompetenceComponent
+    path:'**',component:NotFoundComponent,canActivate:[AuthGuard]
   },
   {
-    path:'grpecompetences',component:AddGrpecompetenceComponent
-  },
-  {
-    path:'**',component:NotFoundComponent
-  },
-  {
-    path:"competences/list",component:ListCompetenceComponent
+    path:"competences/list",component:ListCompetenceComponent,canActivate:[AuthGuard]
   }
   
   

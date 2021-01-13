@@ -29,12 +29,13 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { FormsModule } from '@angular/forms';
 import { ListReferentielComponent } from './components/referentiel/list-referentiel/list-referentiel.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { DetailUserComponent } from './components/user/pop-up/detail-user/detail-user.component';
+import { DetailUserComponent } from './components/user/detail-user/detail-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { AddReferentielComponent } from './components/referentiel/add-referentiel/add-referentiel.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { AddPromoComponent } from './components/promo/add-promo/add-promo.component'; 
+import { AuthGuard } from './guard/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,8 +76,9 @@ import { AddPromoComponent } from './components/promo/add-promo/add-promo.compon
     ReactiveFormsModule, // Pour les controls
     MatSelectModule
   ],
-  providers: [RequestInterceptorProvider],
+  providers: [RequestInterceptorProvider,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
 }
+
