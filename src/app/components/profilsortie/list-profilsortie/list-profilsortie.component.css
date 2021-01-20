@@ -1,6 +1,18 @@
 table 
 { 
-    width :80% ; 
+    width :70% ; 
     margin:auto ;
+    background-color:white;
+    
+    margin-top: 5%;
 } 
-
+td
+{
+    color:#000080;
+    font-size: 20px;
+}
+th
+{
+    color:#000080;
+    font-size: 15px;
+}

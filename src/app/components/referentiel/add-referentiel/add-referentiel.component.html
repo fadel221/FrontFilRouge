@@ -7,34 +7,34 @@
     <mat-label>Libelle</mat-label>
     <input matInput formControlName="libelle">
 </mat-form-field>
+
 <mat-form-field class="example-chip-list">
-  <mat-label>Groupe de Competences...</mat-label>
-  <mat-chip-list #chipList aria-label="Groupe de Competences...">
-    <mat-chip
-      *ngFor="let fruit of fruits"
-      [selectable]="selectable"
-      [removable]="removable"
-      (removed)="remove(fruit)"
-      >
-      {{fruit.libelle}}
+  <mat-label>Favorite Fruits</mat-label>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip *ngFor="let fruit of fruits" [selectable]="true"
+             [removable]="true" (removed)="remove(fruit)" value={{fruit.id}}>
+    
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input formControlName="groupecompetence_array"
-      placeholder="New Groupe de Competences..."
-      #fruitInput
-      [formControl]="FormReferentiel"
-      [matAutocomplete]="auto"
-      [matChipInputFor]="chipList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)">
+    <input placeholder="New fruit..."
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)"
+           [matAutocomplete]="auto"
+           formControlName="groupecompetence_array"
+           
+           >
   </mat-chip-list>
-  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit.id">
-      {{fruit.libelle}}
-    </mat-option>
+  <mat-autocomplete (optionSelected)="selected($event)" #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option  *ngFor="let grpcmp of grpcmps" value={{grpcmp.id}}>
+          {{grpcmp.id}}
+      </mat-option>
   </mat-autocomplete>
 </mat-form-field>
 
+
+  
   <mat-form-field class="example-full-width">
     <mat-label>Presentation</mat-label>
     <textarea matInput formControlName="presentation" placeholder="Ex. It makes me feel..."></textarea>
@@ -48,28 +48,36 @@
             
             <textarea formControlName="critereEvaluation" matInput placeholder="Critéres d'évaluations"></textarea>
           </mat-form-field>
+
     </mat-tab>
+
     <mat-tab label="Critéres d'admission">
         
-
           <mat-form-field class="example-full-width">
             
-            <textarea formControlName="critereAdmission" matInput placeholder="Critéres d'admission"></textarea>
+          <textarea formControlName="critereAdmission" matInput placeholder="Critéres d'admission"></textarea>
+          
           </mat-form-field>
     </mat-tab>
       </mat-tab-group>
       
         <p>
-          <mat-form-field>
-          <ngx-mat-file-input formControlName="programme" name="programme" ngModel #programme placeholder="Programme" ></ngx-mat-file-input>
-          <mat-icon matSuffix>folder</mat-icon>
-          </mat-form-field>
-          </p>
+            <mat-form-field>
+            <ngx-mat-file-input (change)="selectedFile($event.target.files)" formControlName="programme" name="programme" ngModel #programme placeholder="Programme" ></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+
+        </p>
+
         </form>
       
   <div class="col-lg-6 login-btm login-button">
-    <button (click)="addReferentiel(FormReferentiel.value)" [disabled]="FormReferentiel.invalid" style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px"  class="btn btn-outline-primary">SUBMIT</button>
+    <button (click)="addReferentiel(FormReferentiel)" [disabled]="FormReferentiel.invalid" style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px"  class="btn btn-outline-primary">SUBMIT</button>
 </div>
 </div>
 </div>
+
+<button (click)="redirect()">
+Ref
+</button>
   

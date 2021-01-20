@@ -65,11 +65,19 @@ const routes: Routes = [
     path:'referentiels/add',component:AddReferentielComponent,canActivate:[AuthGuard]
   },
   {
-    path:'competences',component:ListCompetenceComponent,canActivate:[AuthGuard]
+    path:'competences',canActivate:[AuthGuard],children:[
+      {
+        path:'list',component:ListCompetenceComponent
+      },
+      {
+        path:'add',component:AddCompetenceComponent,canActivate:[AuthGuard]
+      },
+      {
+        path:'list/user',component:AddUserComponent
+      }
+    ]
   },
-  {
-    path:'competences/add',component:AddCompetenceComponent,canActivate:[AuthGuard]
-  },
+  
   {
     path:'grpecompetences',component:AddGrpecompetenceComponent,canActivate:[AuthGuard]
   },

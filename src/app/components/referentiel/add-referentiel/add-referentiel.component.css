@@ -13,6 +13,10 @@
   top:90px;
 }
 
+.example-chip-list {
+  width: 100%;
+}
+
 .mat-tab-group {
   margin-bottom: 48px;
 }

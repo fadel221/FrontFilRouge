@@ -36,6 +36,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { AddPromoComponent } from './components/promo/add-promo/add-promo.component'; 
 import { AuthGuard } from './guard/auth.guard';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { AuthGuard } from './guard/auth.guard';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule, // Pour les controls
-    MatSelectModule
+    MatSelectModule,
+    PdfViewerModule
   ],
   providers: [RequestInterceptorProvider,AuthGuard],
   bootstrap: [AppComponent]

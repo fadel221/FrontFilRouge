@@ -10,7 +10,7 @@ export class ProfilsortieService {
 
   getProfilSorties()
   {
-    return this.Httpclient.get("http://localhost:8000/api/admin/profilsorties");
+    return this.Httpclient.get("http://localhost:8000/api/admin/profilsorties?isDeleted=false");
   }
 
   addProfilsortie(data:any)
@@ -26,6 +26,16 @@ export class ProfilsortieService {
   archiveProfilsortie(id:any)
   {
     return this.Httpclient.delete("http://localhost:8000/api/admin/profilsorties/"+id);
+  }
+
+  getProfilsortieById(id:number,data:any)
+  {
+    const profilsortie: any = data.find(
+     (p:any) => {
+       return p.id===id;
+     } 
+    );
+      return profilsortie;
   }
 
   
