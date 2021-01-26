@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
-import { setTimeout } from 'timers';
+
 
 @Component({
   selector: 'app-archive-user',

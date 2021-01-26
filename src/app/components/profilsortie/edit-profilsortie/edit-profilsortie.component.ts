@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProfilsortieService } from 'src/app/Services/profilsortie.service';
 
 @Component({
   selector: 'app-edit-profilsortie',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditProfilsortieComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _profilsortieservice:ProfilsortieService) { }
+Allprofilsortie:any
   ngOnInit(): void {
+    this._profilsortieservice.getProfilSorties().subscribe(
+      (response:any)=>
+      {
+        this.Allprofilsortie=response["hydra:member"];
+      }
+    )
   }
 
 }

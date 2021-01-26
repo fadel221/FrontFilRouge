@@ -16,7 +16,9 @@
     
       <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
     </mat-chip>
-    <input placeholder="New fruit..."
+    <input 
+            
+            placeholder="New fruit..."
            [matChipInputFor]="chipList"
            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
            [matChipInputAddOnBlur]="addOnBlur"
@@ -27,7 +29,7 @@
            >
   </mat-chip-list>
   <mat-autocomplete (optionSelected)="selected($event)" #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option  *ngFor="let grpcmp of grpcmps" value={{grpcmp.id}}>
+      <mat-option  *ngFor="let grpcmp of grpcmps" [value]="grpcmp.id">
           {{grpcmp.id}}
       </mat-option>
   </mat-autocomplete>

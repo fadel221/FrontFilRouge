@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProfilsortieService } from 'src/app/Services/profilsortie.service';
 
 @Component({
   selector: 'app-add-profilsortie',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddProfilsortieComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _profilsortieservice:ProfilsortieService,private _router:Router) { }
+Allprofilsortie:any
   ngOnInit(): void {
+
+  }
+
+  addProfilsortie(data:any)
+  {
+    this._profilsortieservice.addProfilsortie(data).subscribe(
+      (response:any)=>
+      { 
+        
+      }
+    )
   }
 
 }

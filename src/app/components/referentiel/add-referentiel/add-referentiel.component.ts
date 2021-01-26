@@ -1,11 +1,11 @@
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
+import {MatAutocomplete,MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
+import { map,startWith} from 'rxjs/operators';
 import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
 import { ReferentielService } from 'src/app/Services/referentiel.service';
 
@@ -13,9 +13,7 @@ import { ReferentielService } from 'src/app/Services/referentiel.service';
 
 
 
-export interface Fruit {
-  name: string;
-}
+
 
 @Component({
   selector: 'app-add-referentiel',
@@ -46,11 +44,11 @@ export class AddReferentielComponent implements OnInit {
 
     add(event: MatChipInputEvent): void {
       const input = event.input;
-      const value:any = event.value;
+      let value:any = event.value;
   
       // Add our fruit
       if ((value || '').trim()) {
-        this.fruits.push( value.id.trim())
+        this.fruits.push(value)
         
       }
 

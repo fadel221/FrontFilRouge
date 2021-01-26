@@ -20,7 +20,7 @@ AllReferentiel:any
         
         this.AllReferentiel=response["hydra:member"]
         this.pdfSrc = 'data:file/pdf;base64,'+ this.AllReferentiel[0].presentation;
-        console.log (this.pdfSrc)
+        
       }
     )
   }
