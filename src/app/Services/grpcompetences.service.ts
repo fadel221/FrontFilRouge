@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,13 @@ export class GrpcompetencesService {
 
   AddGrpeCompetence(data:any)
   {
-    return this._httpClient.post("http://localhost:8000/api/admin/groupecompetences",data)
+    return this._httpClient.post(environment.url+"admin/groupecompetences",data)
   }
   
 
   getGrpeCompetence()
   {
-    return this._httpClient.get("http://localhost:8000/api/admin/groupecompetences");
+    return this._httpClient.get(environment.url+"admin/groupecompetences");
   }
 
   getGrpecompetenceByLibelle(libelle:any,data:any)
@@ -24,7 +25,18 @@ export class GrpcompetencesService {
     const groupecompetence: any = data.find(
      (g:any) => {
        
-       return console.log (g.id ? g.libelle===libelle: null);
+       return g.libelle===libelle;
+     } 
+    );
+      return groupecompetence;
+  }
+
+  getGrpecompetenceById(id:any,data:any)
+  {
+    const groupecompetence: any = data.find(
+     (g:any) => {
+       
+       return g.id===id;
      } 
     );
       return groupecompetence;

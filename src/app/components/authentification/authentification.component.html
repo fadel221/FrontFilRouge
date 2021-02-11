@@ -1,27 +1,32 @@
 <div id="container-login">
-    <div class="container">
+    <div class="container" style="position: relative;top:40px;">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
             <div class="col-lg-6 col-md-8 login-box">
-                <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                </div>
-                <div class="col-lg-12 login-title" style="color:white;position: relative;bottom: 60px; ">
+                
+                <div class="col-lg-12 login-title" style="color:white;position: relative;top:20px; ">
                     <div class="header-login" style="background-color:#000080;border-radius: 20px;;width:50%;height: 60px;margin: auto;font-size: 25px;">
                         <div style="position: relative;top:20px">FIL ROUGE LOGIN</div>
                     </div>
                 </div>
 
                 <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form" style="position: relative;top:40px;">
                         <form #f="ngForm">
                             <div class="form-group">
                                 <label class="form-control-label" style="color:#000080;">USERNAME</label>
                                 <input required type="text" class="form-control" name="username" #username="ngModel" ngModel>
+                                <span  style="color: red;">
+                                    
+                                </span>
                             </div>
+                            
                             <div class="form-group">
                                 <label class="form-control-label" style="color:#000080;">PASSWORD</label>
-                                <input required type="password" class="form-control" i name="password" #password="ngModel" ngModel>
+                                <input required type="password" class="form-control"  name="password" #password="ngModel" ngModel>
+                                <span style="color: red;position: relative;display: inline-block;">
+                                    
+                                </span>
                             </div>
 
                             <div class="col-lg-12 loginbttm">
@@ -29,7 +34,7 @@
                                     <!-- Error Message -->
                                 </div>
                                 <div class="col-lg-6 login-btm login-button">
-                                    <button style="color:white;background-color:#000080;margin: auto;position: relative;top:30px;left:35px" (click)="login(f.value)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+                                    <button style="color:white;background-color:#000080;margin: auto;position: relative;left:35px;bottom:20px;display: inline-block;"  (click)="login(f.value)" class="btn btn-outline-primary">SUBMIT</button>
                                 </div>
                             </div>
                         </form>

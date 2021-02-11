@@ -1,0 +1,167 @@
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" style="background-color: darkblue;">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+</div>
+        <div class="p-4">
+          <h1><a href="www.sonatelacademy.sn" class="logo">Sonatel Academy <span>#CodingForBetterLife</span></a></h1>
+    
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+               <span (click)="redirect(1)" class="fa fa-home mr-3">Home</span>
+            </li>
+            <li class="active" style="height:70%;">
+                <span (click)="redirect(2)" class="fa fa-user mr-3">Users</span>
+            </li>
+            <li>
+            <span (click)="redirect(3)" class="fa fa-briefcase mr-3">Profils</span>
+            </li>
+            <li>
+            <span (click)="redirect(4)" class="fa fa-sticky-note mr-3">Groupe de Competences</span>
+            </li>
+            <li>
+            <span (click)="redirect(5)" class="fa fa-suitcase mr-3">Competences</span>
+            </li>
+            <li>
+            <span (click)="redirect(6)" class="fa fa-cogs mr-3">Referentiels</span>
+            </li>
+            <li>
+            <span (click)="redirect(7)" class="fa fa-paper-plane mr-3">Profil de Sortie</span>
+            </li>
+      
+            <li>
+              <span (click)="redirect(8)" class="fa fa-paper-plane mr-3">Promo</span>
+              </li>
+      
+          </ul>
+
+    
+
+    <div class="footer">
+    
+    </div>
+
+  </div>
+</nav>
+
+<!-- Page Content  -->
+
+
+
+<div id="content" class="p-4 p-md-5 pt-5" style="background-color:#f7f7f9;overflow: auto;">
+    
+    <div style="width: 100%;">
+        <div class="card card-chart">
+          <div class="card-header card-header" style="width:100%;height:130px;background-color: darkblue;position: relative;left:1%">
+            <a routerLink="add">
+            <span class="material-icons" style="color:cyan;position: relative;align-self: flex-end;">
+                add_circle
+            </span>
+        </a>
+            
+        </div>
+          <div class="card-body" style="height:80px;">
+            <h4 class="card-title">Liste des {{profil}}S</h4>
+            <p class="card-category">
+              <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> updated 4 minutes ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <div id="content-page" style="width: 100%;height: 82%;overflow: scroll;position: relative;">
+    <div style="position: relative;left:48%;top:30%;overflow: auto;">
+      <mat-spinner [hidden]="showSpinner"></mat-spinner>
+    </div>
+    <div class="container-fluid" [hidden]="ShowData">
+            
+        
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource"  style=" background-color:white;position: relative;"> 
+      <!--- Note that these columns can be defined in any order. The actual rendered columns are set as a property on the row definition" --> 
+      <!-- Position Column --> 
+    
+      <ng-container matColumnDef="username"> 
+      <th id="id" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Username
+      </th> 
+      <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.username}} 
+      </td>
+      </ng-container> 
+    
+      <ng-container matColumnDef="avatar"> 
+          <th id="id" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080;"> Avatar
+          </th> 
+          <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080;background-size: 10%;"><img width="80" height="80" style="border-radius: 20px;" src="{{'data:image/jpg;base64,'+ user.avatar}}" alt="avatar">
+          </td> 
+      </ng-container>
+      <!-- Name Column --> 
+      <ng-container matColumnDef="prenom"> 
+      <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Prenom
+      </th> 
+      <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.prenom}} 
+      </td> 
+      </ng-container> 
+    
+      <!-- Name Column --> 
+      <ng-container matColumnDef="nom"> 
+          <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Nom
+          </th> 
+          <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.nom}} 
+          </td> 
+          </ng-container>
+          
+          <ng-container matColumnDef="email"> 
+              <th id="user" mat-header-cell *matHeaderCellDef style="font-size:18px;color:#000080"> Email
+              </th> 
+              <td mat-cell *matCellDef="let user" style="font-size:18px;color:#000080"> {{user.email}} 
+              </td> 
+              </ng-container>
+    
+      <ng-container matColumnDef="action">
+          
+          <mat-header-cell  *matHeaderCellDef style="font-size:18px;color:#000080 ;position: relative;top: 30px;">
+        </mat-header-cell>
+          <mat-cell *matCellDef="let profil" style="position: relative;top: 30px">
+          
+              <button routerLink="details/{{profil.id}}"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                  <span class="material-icons" style="color: deeppink;">
+                      visibility
+                  </span>
+                </button>
+                <button routerLink="update/{{profil.id}}"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                  <span class="material-icons" style="color: deeppink;">
+                      edit
+                  </span>
+                </button>
+                <button routerLink="archive/{{profil.id}}"   mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+                  <span class="material-icons" style="color: deeppink;">
+                      delete
+                  </span>
+                </button>
+          </mat-cell>
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns">
+      </tr> 
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr> 
+      </table>
+      
+    
+    </div>
+      
+     
+    
+
+  </div>
+   </div>
+
+</div>
+<router-outlet></router-outlet>
+

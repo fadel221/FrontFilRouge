@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
+import { ToolsService } from 'src/app/Services/tools.service';
+
+@Component({
+  selector: 'app-liste-grpecompetence',
+  templateUrl: './liste-grpecompetence.component.html',
+  styleUrls: ['./liste-grpecompetence.component.css']
+})
+export class ListeGrpecompetenceComponent implements OnInit {
+
+  constructor(private _router:Router,private serv:ToolsService,private service:GrpcompetencesService) { }
+
+  
+  
+  panelOpenState = false;
+  referentiels:any
+  showSpinner=false;
+  ShowData=true;
+  ngOnInit(): void {
+    setTimeout(() => {
+        this.showSpinner=!this.showSpinner;
+        this.ShowData=!this.ShowData;
+      },
+        2000)
+    this.service.getGrpeCompetence().subscribe(
+      (response)=>
+      {
+        this.referentiels=response["hydra:member"];
+        console.log(this.referentiels);
+        
+      }
+    )    
+  }
+
+  redirect(data:any){
+    this.serv.redirect(data)
+  }
+
+  headerDetail(data:any)
+  {
+    this._router.navigate(['/home/groupecompetences/details/'+data])
+  }
+
+}

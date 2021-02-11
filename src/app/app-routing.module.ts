@@ -1,94 +1,113 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
-import { AddCompetenceComponent } from './components/competences/add-competence/add-competence.component';
-import { ListCompetenceComponent } from './components/competences/list-competence/list-competence.component';
-import { AddGrpecompetenceComponent } from './components/grpecompetences/add-grpecompetence/add-grpecompetence.component';
-import { ListGrpecompetenceComponent } from './components/grpecompetences/list-grpecompetence/list-grpecompetence.component';
-import { HomeComponent } from './components/home/home.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ListProfilComponent } from './components/profil/list-profil/list-profil.component';
-import { ListProfilsortieComponent } from './components/profilsortie/list-profilsortie/list-profilsortie.component';
-import { AddPromoComponent } from './components/promo/add-promo/add-promo.component';
-import { AddReferentielComponent } from './components/referentiel/add-referentiel/add-referentiel.component';
-import { ListReferentielComponent } from './components/referentiel/list-referentiel/list-referentiel.component';
+import { ListeCompetencesComponent } from './components/competences/liste-competences/liste-competences.component';
+import { DetailsProfilComponent } from './components/profils/details-profil/details-profil.component';
+import { ErrorComponent } from './components/error/error.component';
+import { DetailsGroupecompetencesComponent } from './components/groupecompetences/details-groupecompetences/details-groupecompetences.component';
+import { ListeGrpecompetenceComponent } from './components/groupecompetences/liste-grpecompetence/liste-grpecompetence.component';
+import { ListePromoComponent } from './components/liste-promo/liste-promo.component';
+import { ListeProfilsComponent } from './components/profils/liste-profils/liste-profils.component';
+import { AddProfilsortiesComponent } from './components/profilsorties/add-profilsorties/add-profilsorties.component';
+import { ListeProfilsortiesComponent } from './components/profilsorties/liste-profilsorties/liste-profilsorties.component';
+import { AddReferentielComponent } from './components/referentiels/add-referentiel/add-referentiel.component';
+import { DetailReferentielComponent } from './components/referentiels/detail-referentiel/detail-referentiel.component';
+import { ListeReferentielsComponent } from './components/referentiels/liste-referentiels/liste-referentiels.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
-import { ArchiveUserComponent } from './components/user/archive-user/archive-user.component';
-import { DetailUserComponent } from './components/user/detail-user/detail-user.component';
-import { ListeUserComponent } from './components/user/liste-user/liste-user.component';
-import { UpdateUserComponent } from './components/user/update-user/update-user.component';
-import { AuthGuard } from './guard/auth.guard';
+import { DetailsUserComponent } from './components/user/details-user/details-user.component';
+import { ListUserComponent } from './components/user/list-user/list-user.component';
 
 const routes: Routes = [
   {
-    path: 'home', component: HomeComponent,canActivate:[AuthGuard]
+    path:'',component:AuthentificationComponent
   },
+  
   {
     path:'auth',component:AuthentificationComponent
   },
+  
   {
-    path:'',component:AuthentificationComponent
-  },
-  {
-    path:'user' ,children:
-    [
-        {
-          path:'',component:ListeUserComponent,canActivate:[AuthGuard]
-        },
-        {
-          path:"add",component:AddUserComponent,canActivate:[AuthGuard]
-        },
-        {
-          path:'detail/:id',component:DetailUserComponent,canActivate:[AuthGuard]
-        },
-        {
-          path:'update/:id',component:UpdateUserComponent,canActivate:[AuthGuard]
-        },
-        {
-          path:'archive/:id',component:ArchiveUserComponent,canActivate:[AuthGuard]
-        }
-    ]
-},
-  {
-    path:'profil',component:ListProfilComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'profilsorties',component:ListProfilsortieComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'promos',component:AddPromoComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'referentiels',component:ListReferentielComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'referentiels/add',component:AddReferentielComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'competences',canActivate:[AuthGuard],children:[
+    path:'home',children:[
+
       {
-        path:'list',component:ListCompetenceComponent
+        path:'',  component:SidebarComponent,canActivate:[AuthGuard]
       },
       {
-        path:'add',component:AddCompetenceComponent,canActivate:[AuthGuard]
+        path:'users',children:
+        [
+          {
+            path:"",component:ListUserComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:"add",component:AddUserComponent
+          },
+          {
+            path:"details/:id",component:DetailsUserComponent,canActivate:[AuthGuard]
+          }
+        ]
       },
       {
-        path:'list/user',component:AddUserComponent
+        path:'profilsorties',children:
+        [
+          {
+            path:"",component:ListeProfilsortiesComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'add', component:AddProfilsortiesComponent,canActivate:[AuthGuard]
+          }
+          
+        ]
+
+      },
+      {
+        path:'profils',canActivate:[AuthGuard],children:[
+          {
+            path:'',component:ListeProfilsComponent
+          },
+          {
+            path:'details/:profil',component:DetailsProfilComponent,canActivate:[AuthGuard]
+          }
+        ]
+      },
+      {
+        path:'referentiels',children:
+        [
+          {
+            path:"",component:ListeReferentielsComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'detail/:id',component:DetailReferentielComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'add',component:AddReferentielComponent
+          }
+        ]
+      },
+      {
+        path:'groupecompetences',children:
+        [
+          {
+            path:'',component:ListeGrpecompetenceComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'details/:id',component:DetailsGroupecompetencesComponent,canActivate:[AuthGuard]
+          },
+
+        ]
+      },
+      {
+        path:'competences',component:ListeCompetencesComponent,canActivate:[AuthGuard]
+      },
+      {
+        path:'promos',component:ListePromoComponent,canActivate:[AuthGuard]
       }
     ]
   },
-  
   {
-    path:'grpecompetences',component:AddGrpecompetenceComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:'**',component:NotFoundComponent,canActivate:[AuthGuard]
-  },
-  {
-    path:"competences/list",component:ListCompetenceComponent,canActivate:[AuthGuard]
+    path:"**",component:ErrorComponent,canActivate:[AuthGuard]
   }
-  
-  
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,17 @@ export class CompetencesService {
 
   AddCompetence(data:any)
   {
-    return this._httpClient.post("http://localhost:8000/api/admin/competences",data)
+    return this._httpClient.post(environment.url+"admin/competences",data)
+  }
+
+  getCompetenceByLibelle(libelle:any,data:any)
+  {
+    const competence: any = data.find(
+     (g:any) => {
+       
+       return g.libelle===libelle;
+     } 
+    );
+      return competence;
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProfilService {
 
   getProfil()
   {
-    return this.Httpclient.get("http://localhost:8000/api/admin/profils");
+    return this.Httpclient.get(environment.url+"admin/profils");
   }
 
   

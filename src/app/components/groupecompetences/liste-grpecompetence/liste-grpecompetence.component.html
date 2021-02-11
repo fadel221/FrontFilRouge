@@ -1,0 +1,110 @@
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" style="background-color: darkblue;">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+</div>
+        <div class="p-4">
+          <h1><a href="www.sonatelacademy.sn" class="logo">Sonatel Academy <span>#CodingForBetterLife</span></a></h1>
+          <ul class="list-unstyled components mb-5">
+            <li class="active">
+               <span (click)="redirect(1)" class="fa fa-home mr-3">Home</span>
+            </li>
+            <li class="active" style="height:70%;">
+                <span (click)="redirect(2)" class="fa fa-user mr-3">Users</span>
+            </li>
+            <li>
+            <span (click)="redirect(3)" class="fa fa-briefcase mr-3">Profils</span>
+            </li>
+            <li>
+            <span (click)="redirect(4)" class="fa fa-sticky-note mr-3">Groupe de Competences</span>
+            </li>
+            <li>
+            <span (click)="redirect(5)" class="fa fa-suitcase mr-3">Competences</span>
+            </li>
+            <li>
+            <span (click)="redirect(6)" class="fa fa-cogs mr-3">Referentiels</span>
+            </li>
+            <li>
+            <span (click)="redirect(7)" class="fa fa-paper-plane mr-3">Profil de Sortie</span>
+            </li>
+      
+            <li>
+              <span (click)="redirect(8)" class="fa fa-paper-plane mr-3">Promo</span>
+              </li>
+      
+          </ul>
+
+    
+
+    <div class="footer">
+    
+    </div>
+
+  </div>
+</nav>
+
+<!-- Page Content  -->
+
+
+
+<div id="content" class="p-4 p-md-5 pt-5" style="background-color:#f7f7f9;overflow: auto;">
+    
+    <div style="width: 100%;">
+        <div class="card card-chart">
+          <div class="card-header card-header" style="width:100%;height:130px;background-color: darkblue;position: relative;left:1%">
+            <a href="#">
+            <span class="material-icons" style="color:cyan;position: relative;align-self: flex-end;">
+                add_circle
+            </span>
+        </a>
+            
+        </div>
+          <div class="card-body" style="height:80px;">
+            <h4 class="card-title">Liste Des Groupes de Competences</h4>
+            <p class="card-category">
+              <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> updated 4 minutes ago
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <div id="content-page" style="width: 100%;height: 40%;overflow: scroll;position: relative;">
+    <div style="position: relative;left:48%;top:30%;overflow: auto;">
+      <mat-spinner [hidden]="showSpinner"></mat-spinner>
+    </div>
+    <div class="container-fluid mb-5" [hidden]="ShowData">
+      
+
+      <div class="row">
+        <div *ngFor="let referentiel of referentiels" class="col-md-4">
+          <div class="card border mb-g">
+            <div class="card-header bg-danger-700 pr-3 d-flex align-items-center flex-wrap" style="background-color: #00008b;color: white;;">
+              <div class="card-title" style="font-size: 20px;">{{referentiel.libelle}}</div>
+             
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{referentiel.descriptif}}</p>
+              <div class="icons" style="color:blue;">
+                <span style="cursor: pointer;">Details <i  class="fas fa-eye" (click)="headerDetail(referentiel.id)"></i> </span>  
+                 <span style="cursor: pointer;">Update <i  class="far fa-edit" (click)="header()"></i> </span> 
+                 <span style="cursor: pointer;">Delete <i  class="fas fa-trash"(click)="header()"></i> </span> 
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+  </div>
+   </div>
+
+</div>
+<router-outlet></router-outlet>
+

@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConnexionService {
 
-  link='http://localhost:8000/api/login_check';
+  link=environment.url+"login_check";
 
   constructor (private http: HttpClient,private _router:Router) 
   { 

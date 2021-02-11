@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Profil } from 'src/app/entity/profil';
 import { ProfilService } from 'src/app/Services/profil.service';
+import { ToolsService } from 'src/app/Services/tools.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -12,10 +12,24 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AddUserComponent implements OnInit {
   url="./assets/images/background.jpg";
-  avatar:any
+  avatar:any;
+  panelOpenState = false;
+  showSpinner=false;
+  ShowData=true;
+  profils:any;
   //UserForm:FormGroup;
-  profils:Profil[]=[];
+  constructor(private service:ToolsService,private route:Router,private serviceprofil:ProfilService,private userservice:UserService) { }
+  
+  
+
   ngOnInit(): void {
+
+    setTimeout(() => {
+      this.showSpinner=!this.showSpinner;
+      this.ShowData=!this.ShowData;
+    },
+      2000)
+  
 
 
     /*this.UserForm=new FormGroup(
@@ -35,6 +49,8 @@ export class AddUserComponent implements OnInit {
           this.profils=response["hydra:member"];
         }
       )
+
+      
     //console.log (this.UserForm)
   }
   addUser (data:any)
@@ -51,14 +67,20 @@ export class AddUserComponent implements OnInit {
       (response)=>
       {
         console.log (response)
+        this.route.navigate(['home']);
       }
     )
   }
 
-  constructor(private route:Router,private serviceprofil:ProfilService,private userservice:UserService) 
-  {
 
+  
+  
+
+  redirect(data:any){
+    this.service.redirect(data)
   }
+
+  
   Add()
   {
     this.route.navigate(['competences/add']);

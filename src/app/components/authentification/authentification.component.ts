@@ -9,12 +9,14 @@ import { ConnexionService } from 'src/app/Services/connexion.service';
 })
 export class AuthentificationComponent implements OnInit {
 
-  constructor (private con: ConnexionService,private router: Router )
-{
+  constructor (private con:ConnexionService, private router:Router){
 
-}
+  }
  
-login(credentials :any)
+  ngOnInit(): void {
+  }
+
+  login(credentials :any)
 {
   
   this.con.GetToken(credentials).subscribe(
@@ -23,16 +25,14 @@ login(credentials :any)
       const token= response.token;
       console.log(token)
       localStorage.setItem('token',token);
-      this.router.navigate(['user']);
+      this.router.navigate(['home']);
     },
     (error: any) =>
     {
+      alert("Veuillez vérifier le login ou le mot de passe ")
       console.log(error)
     }
   )
 }
-
-  ngOnInit(): void {
-  }
 
 }

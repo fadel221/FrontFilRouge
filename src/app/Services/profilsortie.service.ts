@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,22 @@ export class ProfilsortieService {
 
   getProfilSorties()
   {
-    return this.Httpclient.get("http://localhost:8000/api/admin/profilsorties?isDeleted=false");
+    return this.Httpclient.get(environment.url+"admin/profilsorties?isDeleted=false");
   }
 
   addProfilsortie(data:any)
   {
-    return this.Httpclient.post("http://localhost:8000/api/admin/profilsorties",data);
+    return this.Httpclient.post(environment.url+"admin/profilsorties",data);
   }
 
   updateProfilsortie(data:any)
   {
-    return this.Httpclient.put("http://localhost:8000/api/admin/profilsorties/"+data.id,data);
+    return this.Httpclient.put(environment.url+"admin/profilsorties/"+data.id,data);
   }
 
   archiveProfilsortie(id:any)
   {
-    return this.Httpclient.delete("http://localhost:8000/api/admin/profilsorties/"+id);
+    return this.Httpclient.delete(environment.url+"admin/profilsorties/"+id);
   }
 
   getProfilsortieById(id:number,data:any)
