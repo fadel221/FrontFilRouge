@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import  $  from 'jquery';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ReferentielService } from 'src/app/Services/referentiel.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 
@@ -11,7 +12,7 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class DetailReferentielComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private service:ReferentielService,private serv:ToolsService) { }
+  constructor(private conn:ConnexionService,private route:ActivatedRoute,private service:ReferentielService,private serv:ToolsService) { }
   
   referentiels:any;
   data:any;
@@ -40,6 +41,11 @@ export class DetailReferentielComponent implements OnInit {
 
 redirect(data:any){
   this.serv.redirect(data)
+}
+
+logout()
+{
+  this.conn.logout()
 }
 }
 

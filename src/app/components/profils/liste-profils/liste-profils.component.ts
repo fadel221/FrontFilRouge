@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ProfilService } from 'src/app/Services/profil.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -10,12 +11,14 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./liste-profils.component.css']
 })
 export class ListeProfilsComponent implements OnInit {
-  dataSource:any;
-  constructor(private service:ProfilService,private serv:ToolsService,private userservice:UserService,private _router:Router) { }
+  
+  constructor(private conn:ConnexionService,private service:ProfilService,private serv:ToolsService,private userservice:UserService,private _router:Router) { }
   Users:any
+  dataSource:any;
   panelOpenState = false;
   showSpinner=false;
   ShowData=true;
+  searchValue:any
   ngOnInit(): void {
     setTimeout(() => {
         this.showSpinner=!this.showSpinner;
@@ -37,6 +40,9 @@ export class ListeProfilsComponent implements OnInit {
     this._router.navigate(['/home/profils/details/'+data])
   }
 
-  
+  logout()
+  {
+    this.conn.logout()
+  }
 
 }

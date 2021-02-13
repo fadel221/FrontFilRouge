@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 
@@ -10,7 +11,7 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class DetailsGroupecompetencesComponent implements OnInit {
 
-  constructor(private route:ActivatedRoute,private service:GrpcompetencesService,private serv:ToolsService) { }
+  constructor(private conn:ConnexionService, private route:ActivatedRoute,private service:GrpcompetencesService,private serv:ToolsService) { }
   
   groupecompetence:any;
   data:any;
@@ -36,6 +37,11 @@ export class DetailsGroupecompetencesComponent implements OnInit {
 
 redirect(data:any){
   this.serv.redirect(data)
+}
+
+logout()
+{
+  this.conn.logout()
 }
 
 }

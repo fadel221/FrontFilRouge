@@ -45,8 +45,9 @@ import { DetailReferentielComponent } from './components/referentiels/detail-ref
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DetailsGroupecompetencesComponent } from './components/groupecompetences/details-groupecompetences/details-groupecompetences.component';
 import { DetailsUserComponent } from './components/user/details-user/details-user.component';
-import { GetEmployePipe } from './Pipes/get-employe.pipe';
 import { DetailsProfilComponent } from './components/profils/details-profil/details-profil.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FilterSearchPipe } from './pipes/filter-search.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,8 +85,8 @@ import { DetailsProfilComponent } from './components/profils/details-profil/deta
     DetailReferentielComponent,
     DetailsGroupecompetencesComponent,
     DetailsUserComponent,
-    GetEmployePipe,
-    DetailsProfilComponent
+    DetailsProfilComponent,
+    FilterSearchPipe
   ],
   imports: [
     BrowserModule,
@@ -97,7 +98,8 @@ import { DetailsProfilComponent } from './components/profils/details-profil/deta
     MatSelectModule,
     MatButtonToggleModule,
     HttpClientModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MDBBootstrapModule
   ],
   providers: [RequestInterceptorProvider],
   bootstrap: [AppComponent]

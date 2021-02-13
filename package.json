@@ -25,10 +25,12 @@
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "angular-bootstrap-md": "^10.1.1",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "material-icons": "^0.5.2",
     "ng2-pdf-viewer": "^6.3.2",
+    "ngx-material-file-input": "^2.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

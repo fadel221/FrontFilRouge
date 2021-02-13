@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import $ from "jquery";
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +9,7 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private service:ToolsService) { }
+  constructor(private conn:ConnexionService,private service:ToolsService) { }
   panelOpenState = false;
   profilsortie=['Dev web','Digital Mark','Data Artisan','Web Designer','kf','&r','fkel','fr']
   showSpinner=false;
@@ -25,6 +26,11 @@ export class SidebarComponent implements OnInit {
 
   redirect(data:any){
     this.service.redirect(data)
+  }
+
+  logout()
+  {
+    this.conn.logout()
   }
 
 }

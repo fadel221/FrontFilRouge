@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ProfilsortieService } from 'src/app/Services/profilsortie.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 
@@ -9,8 +10,8 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class ListeProfilsortiesComponent implements OnInit {
  dataSource:any
-  constructor(private service:ProfilsortieService,private serv:ToolsService) { }
-
+  constructor(private conn:ConnexionService,private service:ProfilsortieService,private serv:ToolsService) { }
+  searchValue:any
   panelOpenState = false;
   profilsortie=['Dev web','Digital Mark','Data Artisan','Web Designer','kf','&r','fkel','fr']
   showSpinner=false;
@@ -33,5 +34,9 @@ export class ListeProfilsortiesComponent implements OnInit {
 
   redirect(data:any){
     this.serv.redirect(data)
+  }
+  logout()
+  {
+    this.conn.logout()
   }
 }

@@ -11,29 +11,29 @@
     
           <ul class="list-unstyled components mb-5">
             <li class="active">
-               <span (click)="redirect(1)" class="fa fa-home mr-3">Home</span>
+               <span (click)="redirect(11)" class="fa fa-home mr-3"> Home</span>
             </li>
             <li class="active" style="height:70%;">
-                <span (click)="redirect(2)" class="fa fa-user mr-3">Users</span>
+                <span (click)="redirect(2)" class="fa fa-user mr-3"> Users</span>
             </li>
             <li>
-            <span (click)="redirect(3)" class="fa fa-briefcase mr-3">Profils</span>
+            <span (click)="redirect(3)" class="fa fa-briefcase mr-3"> Profils</span>
             </li>
             <li>
-            <span (click)="redirect(4)" class="fa fa-sticky-note mr-3">Groupe de Competences</span>
+            <span (click)="redirect(4)" class="fa fa-sticky-note mr-3"> Groupe de Competences</span>
             </li>
             <li>
-            <span (click)="redirect(5)" class="fa fa-suitcase mr-3">Competences</span>
+            <span (click)="redirect(5)" class="fa fa-suitcase mr-3"> Competences</span>
             </li>
             <li>
-            <span (click)="redirect(6)" class="fa fa-cogs mr-3">Referentiels</span>
+            <span (click)="redirect(6)" class="fa fa-cogs mr-3"> Referentiels</span>
             </li>
             <li>
-            <span (click)="redirect(7)" class="fa fa-paper-plane mr-3">Profil de Sortie</span>
+            <span (click)="redirect(7)" class="fa fa-paper-plane mr-3"> Profil de Sortie</span>
             </li>
       
             <li>
-              <span (click)="redirect(8)" class="fa fa-paper-plane mr-3">Promo</span>
+              <span (click)="redirect(8)" class="fa fa-paper-plane mr-3"> Promo</span>
               </li>
       
           </ul>
@@ -71,6 +71,9 @@
           <div class="card-footer">
             <div class="stats">
               <i class="material-icons">access_time</i> updated 4 minutes ago
+              <span (click)="logout()" style="color:darkblue;position: relative;left:1190px;width:100px;">Déconnexion
+                <i class="fas fa-power-off" ></i>
+              </span>
             </div>
           </div>
         </div>
@@ -81,10 +84,18 @@
       <mat-spinner [hidden]="showSpinner"></mat-spinner>
     </div>
     <div class="container-fluid" [hidden]="ShowData">
-            
+    
+      <form>
+        <fieldset>
+          <input  placeholder="Taper votre recherche" name="searchValue" type="text" [(ngModel)]="searchValue" />
+          <button type="submit" style="background-color: darkblue;">
+            <i class="fa fa-search"></i>
+          </button>
+        </fieldset>
+      </form>
         
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource"  style=" background-color:white;position: relative;"> 
+    <table mat-table [dataSource]="dataSource | filterSearch:searchValue"  style=" background-color:white;position: relative;"> 
       <!--- Note that these columns can be defined in any order. The actual rendered columns are set as a property on the row definition" --> 
       <!-- Position Column --> 
     

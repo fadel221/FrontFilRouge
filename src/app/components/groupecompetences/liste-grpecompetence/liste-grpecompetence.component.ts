@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 
@@ -10,7 +11,7 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class ListeGrpecompetenceComponent implements OnInit {
 
-  constructor(private _router:Router,private serv:ToolsService,private service:GrpcompetencesService) { }
+  constructor(private conn:ConnexionService,private _router:Router,private serv:ToolsService,private service:GrpcompetencesService) { }
 
   
   
@@ -41,6 +42,11 @@ export class ListeGrpecompetenceComponent implements OnInit {
   headerDetail(data:any)
   {
     this._router.navigate(['/home/groupecompetences/details/'+data])
+  }
+
+  logout()
+  {
+    this.conn.logout()
   }
 
 }

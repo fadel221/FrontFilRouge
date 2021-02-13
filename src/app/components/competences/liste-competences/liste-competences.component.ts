@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import $ from "jquery";
 import { CompetencesService } from 'src/app/Services/competences.service';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { GrpcompetencesService } from 'src/app/Services/grpcompetences.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 @Component({
@@ -11,7 +12,7 @@ import { ToolsService } from 'src/app/Services/tools.service';
 })
 export class ListeCompetencesComponent implements OnInit {
 
-  constructor(private _router:Router,private service:GrpcompetencesService,private competenceservice:CompetencesService,private serv:ToolsService) { }
+  constructor(private _router:Router,private service:GrpcompetencesService,private competenceservice:CompetencesService,private serv:ToolsService,private conn:ConnexionService) { }
 
   
 
@@ -84,6 +85,11 @@ export class ListeCompetencesComponent implements OnInit {
 
   redirect(data:any){
     this.serv.redirect(data)
+  }
+
+  logout()
+  {
+    this.conn.logout()
   }
 
 }

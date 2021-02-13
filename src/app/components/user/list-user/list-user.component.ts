@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -12,6 +13,7 @@ import { UserService } from 'src/app/Services/user.service';
 export class ListUserComponent implements OnInit {
 
   dataSource:any;
+  searchValue:any;
   length:any
   displayedColumns=['avatar','username','prenom','nom','email','action'];
   panelOpenState = false;
@@ -19,7 +21,7 @@ export class ListUserComponent implements OnInit {
   ShowData=true;
   @ViewChild (MatPaginator) paginator:MatPaginator
   
-  constructor(private _router:Router,private serv:ToolsService,private param:ActivatedRoute,private service:UserService,private router:Router) { }
+  constructor(private conn:ConnexionService,private _router:Router,private serv:ToolsService,private param:ActivatedRoute,private service:UserService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -72,6 +74,11 @@ export class ListUserComponent implements OnInit {
   {
     console.log(id)
     this._router.navigate(['/homs.dail/'+id])
+  }
+
+  logout()
+  {
+    this.conn.logout()
   }
 
 }
