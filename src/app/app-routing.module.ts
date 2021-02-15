@@ -18,6 +18,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { DetailsUserComponent } from './components/user/details-user/details-user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
+import { AddCompetenceComponent } from './components/competences/add-competence/add-competence.component';
+import { EditUserComponent } from './components/user/edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -45,7 +47,10 @@ const routes: Routes = [
           },
           {
             path:"details/:id",component:DetailsUserComponent,canActivate:[AuthGuard]
-          }
+          },
+          {
+            path:"update/:id",component:EditUserComponent,canActivate:[AuthGuard]
+          },
         ]
       },
       {
@@ -98,7 +103,16 @@ const routes: Routes = [
         ]
       },
       {
-        path:'competences',component:ListeCompetencesComponent,canActivate:[AuthGuard]
+        path:'competences',canActivate:[AuthGuard],children:
+        [
+          {
+            path:"",component:ListeCompetencesComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'add', component:AddCompetenceComponent,canActivate:[AuthGuard]
+          }
+          
+        ]
       },
       {
         path:'promos',component:ListePromoComponent,canActivate:[AuthGuard]

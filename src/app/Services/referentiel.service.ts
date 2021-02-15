@@ -11,7 +11,7 @@ export class ReferentielService {
 
   getReferentiels()
   {
-    return this.Httpclient.get(environment.url+"admin/referentiels");
+    return this.Httpclient.get(environment.url+"admin/referentiels?isDeleted=false");
   }
 
   addReferentiel(data:any)

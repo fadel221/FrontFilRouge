@@ -14,21 +14,12 @@ export class ListeCompetencesComponent implements OnInit {
 
   constructor(private _router:Router,private service:GrpcompetencesService,private competenceservice:CompetencesService,private serv:ToolsService,private conn:ConnexionService) { }
 
-  
-
   panelOpenState = false;
   Groupecompetence:any;
   Competences:any;
+  competence:any;
+  Levels:any;
   referentiels:any;
-  Niveaux=[{
-
-  },
-{
-
-},
-{
-
-}];
   showSpinner=false;
   ShowData=true;
   ngOnInit(): void {
@@ -42,9 +33,13 @@ export class ListeCompetencesComponent implements OnInit {
       {
         this.referentiels=response["hydra:member"];
         console.log(this.referentiels);
-        this.Competences=this.referentiels["competences"][0];
-        this.Niveaux=this.Competences["niveau"];
-        console.log(this.Niveaux)
+        this.Groupecompetence=this.referentiels[0];
+        this.competenceservice.getCompetences().subscribe(
+          (success:any)=>
+          {
+            this.Competences=success["hydra:member"]
+          }
+        )
       }
     )
         
@@ -59,30 +54,22 @@ export class ListeCompetencesComponent implements OnInit {
     this.Competences=this.Groupecompetence["competences"]
     console.log(this.Groupecompetence)
   }
-  ShowOneNiveau(data:any)
-  {
-    
-    $("#grp1").hide();
-    $("#grp2").hide();
-    $("#grp-3").hide();
-    $("#"+data.id).show()
-  }
+  
   Onfocus(data:any)
   {
-    
+    $('.mat-flat-button').css("background-color", "")
     $('#'+data.id).css("background-color", "darkblue");
     $('#'+data.id).css("color", "white");
-    this.Niveaux=this.competenceservice.getCompetenceByLibelle(data.innerText,this.Competences)["niveau"]
-    console.log(this.Niveaux)
+     this.competence=this.competenceservice.getCompetenceByLibelle(data.innerText,this.Competences)
+    
   }
-  Onblur(data:any)
+  colorLevel(id:any)
   {
-
-    $('#'+data.id).css("background-color", "");
-    $('#'+data.id).css("color", "black");
-    console.log(data);
+    $('#level-1,#level-2,#level-3').css("background-color", "")
+    $('#level-1,#level-2,#level-3').css("color", "#b8ecfb")
+    $('#'+id).css("background-color", "darkblue");
+    $('#'+id).css("color", "white");
   }
-
   redirect(data:any){
     this.serv.redirect(data)
   }

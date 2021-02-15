@@ -17,7 +17,7 @@ export class GrpcompetencesService {
 
   getGrpeCompetence()
   {
-    return this._httpClient.get(environment.url+"admin/groupecompetences");
+    return this._httpClient.get(environment.url+"admin/groupecompetences?isDeleted=false");
   }
 
   getGrpecompetenceByLibelle(libelle:any,data:any)
@@ -40,6 +40,11 @@ export class GrpcompetencesService {
      } 
     );
       return groupecompetence;
+  }
+
+  archiveGrpecompetence(id:any)
+  {
+    return this._httpClient.delete(environment.url+"admin/groupecompetences/"+id)
   }
 
   getGroupecompetenceOnForm(Groupecompetence:any,data:any)

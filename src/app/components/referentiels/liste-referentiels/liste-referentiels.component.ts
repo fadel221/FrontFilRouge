@@ -41,6 +41,20 @@ export class ListeReferentielsComponent implements OnInit {
     console.log(id)
     this._router.navigate(['/home/referentiels/detail/'+id])
   }
+
+  archive(referentielId:any)
+  {
+    
+    
+    
+    this.service.archiveReferentiel(referentielId).subscribe(
+      (response:any)=>
+      {
+        alert("Suppression fait avec succées")
+        this._router.navigate(['/home/referentiels'])
+      }
+    )
+  }
   logout()
   {
     this.conn.logout()

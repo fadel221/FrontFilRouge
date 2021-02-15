@@ -141,21 +141,12 @@
         </mat-header-cell>
           <mat-cell *matCellDef="let profil" style="position: relative;top: 30px">
           
-              <button routerLink="details/{{profil.id}}"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                  <span class="material-icons" style="color: deeppink;">
-                      visibility
-                  </span>
-                </button>
-                <button routerLink="update/{{profil.id}}"  mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                  <span class="material-icons" style="color: deeppink;">
-                      edit
-                  </span>
-                </button>
-                <button routerLink="archive/{{profil.id}}"   mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-                  <span class="material-icons" style="color: deeppink;">
-                      delete
-                  </span>
-                </button>
+            <div class="icons" style="color:blue;">
+              <span style="cursor: pointer;">Details <i  class="fas fa-eye" (click)="headerDetail(profil.id)"></i> </span>  
+               <span style="cursor: pointer;">Update <i  class="far fa-edit" (click)="headerUpdate(profil.id)"></i> </span> 
+               <span style="cursor: pointer;">Delete <i  class="fas fa-trash"(click)="archive(profil.id)"></i> </span> 
+            </div>
+              
           </mat-cell>
         </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns">
@@ -163,8 +154,16 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;">
       </tr> 
       </table>
-      
-    
+
+ <div style="margin: auto;position: relative;left: 30%;">   
+    <ul  class="pagination">
+      <li class="line" ><a (click)="paginate($event.target.innerText,$event.target)">«</a></li>
+      <li class="line" ><a (click)="paginate($event.target.innerText,$event.target)">1</a></li>
+      <li class="line" ><a (click)="paginate($event.target.innerText,$event.target)" class="active" >2</a></li>
+      <li class="line" ><a (click)="paginate($event.target.innerText,$event.target)">»</a></li>
+    </ul>
+  </div>
+
     </div>
       
      

@@ -9,6 +9,11 @@ export class CompetencesService {
 
   constructor(private _httpClient:HttpClient) { }
 
+  getCompetences()
+  {
+    return this._httpClient.get(environment.url+'admin/competences');
+  }
+
   AddCompetence(data:any)
   {
     return this._httpClient.post(environment.url+"admin/competences",data)
@@ -24,4 +29,6 @@ export class CompetencesService {
     );
       return competence;
   }
+
+  
 }

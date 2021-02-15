@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -14,7 +15,8 @@ export class ListUserComponent implements OnInit {
 
   dataSource:any;
   searchValue:any;
-  length:any
+  length:any;
+  page:any
   displayedColumns=['avatar','username','prenom','nom','email','action'];
   panelOpenState = false;
   showSpinner=false;
@@ -39,7 +41,8 @@ export class ListUserComponent implements OnInit {
           console.log(this.dataSource);
           this.service.getCountUser().subscribe(
             (success:any)=>{
-              this.length=success["nbre_user"];
+              this.length=Math.ceil(success["nbre_user"]/10);
+              this.page=1
               console.log(this.length)
             }
           )
@@ -53,14 +56,56 @@ export class ListUserComponent implements OnInit {
     this.router.navigate(["user/add"])
   }
 
-  ArchiveUser(id:any)
+  archive(id:any)
   {
-    console.log (id)
+    this.service.archiveUser(id).subscribe(
+      (response:any)=>
+      {
+        alert("Suppression fait avec succés")
+        this.router.navigate(['/home/users'])
+      }
+    )
+  }
+
+  headerDetail(id:any)
+  {
+    let User=this.service.getUserById(Number(id),this.dataSource)
+    this.router.navigate(['home/users/details/'+id])
+  }
+
+  headerUpdate(id:any)
+  {
+    let User=this.service.getUserById(Number(id),this.dataSource)
+    this.router.navigate(['home/users/update/'+id])
   }
 
   
 
-  
+  paginate(number:any,data:any)
+  {
+    console.log(data)
+    $('#line').css('background-color','')
+    if (number=="»" && this.length>this.page)
+    {
+      this.page++
+    }
+    else if (number==="«" && this.page>1)
+    {
+      this.page--;
+    }
+    
+    else
+    {
+      this.page=number
+    }
+    this.service.getUsersPaginate(this.page).subscribe(
+      (response:any)=>
+      {
+        this.dataSource=response["hydra:member"];
+        this.dataSource=this.service.getEmployee(this.dataSource)
+      }
+    )
+  }
 
     
         

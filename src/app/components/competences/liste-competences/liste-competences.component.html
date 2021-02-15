@@ -89,62 +89,43 @@
       
       <div id="container-competence" style="width: 100%;height:70%;border:2px solid darkblue;">
 
-        <div id="list-competence" style="width: 40%;height:100%; ;position: relative;display: inline-block;overflow:auto">
+        <div id="list-competence" style="width: 40%;height:100%; ;position: relative;display: inline-block;overflow:auto;border:2px solid green;">
 
             <div id="list-groupecompetences" style="width:100%;height:15%;">
 
-              <mat-form-field appearance="fill">
-                <mat-label>Select an option</mat-label>
-                <mat-select style="height: 100%;">
-                  
-                  <mat-option (click)="Show($event.target)" *ngFor="let groupecompetence of referentiels" value={{groupecompetence}} >{{groupecompetence.libelle}}</mat-option>
-                  
-                </mat-select>
-              </mat-form-field>
+              <select>
+                <option (click)="Show($event.target)" value="{{referentiels[0]}}">{{referentiels[0].libelle}}</option>
+                <option (click)="Show($event.target)" *ngFor="let groupecompetence of referentiels" value={{groupecompetence}} >{{groupecompetence.libelle}}</option>
+              </select>
               
 
             </div>
-              <div *ngFor="let competence of Competences" id="content-competences" style="width:100%;height: 20%;position: relative;top:20px;">
-                <div class="row" style="width: 100%;height: 100%;">
-                  <button id={{competence.id}} (blur) =Onblur($event.target) (focus)="Onfocus($event.target)"  style="width: 100%;height:100%;" mat-flat-button >{{competence.libelle}}</button>
+              <div *ngFor="let competence of Groupecompetences.competences" id="content-competences" style="width:100%;height: 20%;position: relative;top:20px;">
+                <div  style="width: 100%;height: 100%;">
+                  <button   id={{competence.id}}  (click)="Onfocus($event.target)"  style="width: 100%;height:100%;" mat-flat-button >{{competence.libelle}}</button>
               </div>
             </div>
 
         </div>
 
         <div id="list-niveaux" style="width: 60%;height:100%;position: relative;display: inline-block;overflow:auto;">
-            <div id="title-niveaux" style="width: 100%;height: 15%;">
+            <div id="title-niveaux" style="width: 50%;height: 10%;display: flex;justify-content: space-between;">
               
-              <p>
-                Niveaux
-                <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                  <mat-button-toggle id="level-1" (click)="ShowOneNiveau($event.target)"   value="Niveau 1">Niveau 1</mat-button-toggle>
-                  <mat-button-toggle id="level-2" (click)="ShowOneNiveau($event.target)" value="Niveau 2">Niveau 2</mat-button-toggle>
-                  <mat-button-toggle id="level-3" (click)="ShowOneNiveau($event.target)"  value="Niveau 3">Niveau 3</mat-button-toggle>
-                </mat-button-toggle-group>
-              </p>
-              
-              
+              <button id="level-1" (click)="colorLevel($event.target.id)"  mat-flat-button >Niveau 1</button>
+              <button id="level-2" (click)="colorLevel($event.target.id)" mat-flat-button >Niveau 2</button>
+              <button id="level-3" (click)="colorLevel($event.target.id)" mat-flat-button >Niveau 3</button>
               
             </div>
 
             <div id="content-niveaux"  style="width: 100%;height: 85%;">
-              <div id="content-grpeaction" style="width: 50%;height: 100%;position: relative;display: inline-block;">
-                <div id="grp1">
-                  
-                </div>
-                <div id="grp2">
-                  
-                </div>
-                <div id="grp3">
-                  
-                </div>
-                <div id="grp3">
-                  
-                </div>
+              
+              <div id="content-grpeaction" style="width: 50%;height: 100%;position: relative;display: inline-block;border: 2px solid red;">
+              
+                
+
               </div>
 
-              <div id="content-critereEvaluation" style="width: 50%;height: 100%;position: relative;display: inline-block;">
+              <div id="content-critereEvaluation" style="width: 50%;height: 100%;position: relative;display: inline-block;border:2px solid brown">
                   
               </div>
 

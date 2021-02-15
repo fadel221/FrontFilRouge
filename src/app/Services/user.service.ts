@@ -15,6 +15,11 @@ export class UserService {
     return this.Httpclient.get(environment.url+"admin/users?isDeleted=false"); 
   }
 
+  getUsersPaginate(page:any)
+  {
+    return this.Httpclient.get(environment.url+"admin/users?page="+page+"?isDeleted=false"); 
+  }
+
   AddUser(data: any){
      return this.Httpclient.post(environment.url+"admin/users",data)
   }

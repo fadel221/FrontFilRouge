@@ -1,1 +1,287 @@
-<p>liste-promo works!</p>
+<div class="wrapper d-flex align-items-stretch">
+    <nav id="sidebar" style="background-color: darkblue;">
+        <div class="custom-menu">
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+</div>
+        <div class="p-4">
+          <h1><a href="www.sonatelacademy.sn" class="logo">Sonatel Academy <span>#CodingForBetterLife</span></a></h1>
+    <ul class="list-unstyled components mb-5">
+      <li class="active">
+         <span (click)="redirect(11)"  class="fa fa-home mr-3"> Home </span>
+      </li>
+      <li class="active" style="height:70%;">
+          <span (click)="redirect(2)" class="fa fa-user mr-3"> Users </span>
+      </li>
+      <li>
+      <span (click)="redirect(3)" class="fa fa-briefcase mr -3"> Profils</span>
+      </li>
+      <li>
+      <span (click)="redirect(4)" class="fa fa-sticky-note  mr-3 "> Groupe de Competences </span>
+      </li>
+      <li>
+      <span (click)="redirect(5)" class="fa fa-suitcase mr- 3"> Competences </span>
+      </li>
+      <li>
+      <span (click)="redirect(6)" class="fa fa-cogs mr-3"> Referentiels </span>
+      </li>
+      <li>
+      <span (click)="redirect(7)" class="fa fa-paper-plane  mr-3 "> Profil de Sortie </span>
+      </li>
+
+      <li>
+        <span (click)="redirect(8)" class="fa fa-paper-plane  mr-3 "> Promo </span>
+        </li>
+
+    </ul>
+
+    
+
+    <div class="footer">
+    
+    </div>
+
+  </div>
+</nav>
+
+<!-- Page Content  -->
+
+
+
+<div id="content" class="p-4 p-md-5 pt-5" style="background-color:#f7f7f9">
+    
+    <div style="width: 100%;">
+        <div class="card card-chart">
+          <div class="card-header card-header" style="width:100%;height:130px;background-color: darkblue;position: relative;left:1%">
+            <a>
+            <span class="material-icons" style="color:cyan;position: relative;align-self: flex-end;">
+                add_circle
+            </span>
+
+            
+        </a>
+            
+        </div>
+          <div class="card-body" style="height:80px;">
+            <h4 class="card-title">Liste Profil de Sorties</h4>
+            <p class="card-category">
+              <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i> updated 4 minutes ago
+              <span (click)="logout()" style="color:darkblue;position: relative;left:1190px;width:100px;">Déconnexion
+                <i class="fas fa-power-off" ></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+   <div id="content-page" style="width: 100%;height: 82%;overflow: scroll;position: relative;">
+    <div style="position: relative;left:48%;top:30%">
+      <mat-spinner [hidden]="showSpinner"></mat-spinner>
+    </div>
+    <div class="container-fluid mb-5" [hidden]="ShowData">
+
+        <div class="container-competence">
+            <div class="header-competence">NEW PROMO</div>
+            <mat-horizontal-stepper #stepper>
+          <mat-step >
+            <form [formGroup]="FormPromo">
+              <ng-template matStepLabel>Etape 1</ng-template>
+              <div>
+                
+        <mat-form-field appearance="fill">
+          <mat-label>Langue</mat-label>
+          <mat-select formControlName="langue">
+            <mat-option  *ngFor="let langue of langues" [value]="langue">
+              {{langue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+          
+                </div>
+                <div>
+                <mat-form-field>
+                <mat-label>Titre</mat-label>
+                <input formControlName="titre" matInput>
+                </mat-form-field>
+                </div>
+                <div>
+                <mat-form-field class="example-full-width">
+                <mat-label>Description de la promo</mat-label>
+                <textarea formControlName="description" matInput placeholder="Ex. It makes me feel..."></textarea>
+                </mat-form-field>
+                </div>
+        
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step >
+            
+              <ng-template matStepLabel>Etape 2</ng-template>
+        
+              <form [formGroup]="FormPromo">
+                    <mat-label>Lieu de la Promo</mat-label>
+                
+                      <mat-form-field class="example-full-width">
+                        
+                        <input matInput formControlName="lieu" placeholder="Lieu de la Promo">
+                      </mat-form-field>
+                
+                    <mat-label>Reference Agate</mat-label>
+                      <mat-form-field class="example-full-width">
+                        <input formControlName="referenceAgate" matInput placeholder="Reference Agate">
+                      </mat-form-field>
+              
+        
+                <mat-label>Choix de la Fabrique</mat-label>
+                  <mat-form-field class="example-full-width">
+                    <input required matInput formControlName="fabrique" placeholder="Choix de la Fabrique">
+                  </mat-form-field>
+        
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Etape 3</ng-template>
+        
+            <form [formGroup]="FormPromo">
+        
+            <mat-form-field class="example-chip-list">
+              <mat-label>Réferentiels</mat-label>
+              <mat-chip-list #chipList aria-label="Réferentiels">
+                <mat-chip
+                  *ngFor="let fruit of fruits"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(fruit)">
+                  {{fruit}}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  
+                  formControlName="referentiels"
+                  placeholder="New Référentiel..."
+                  #fruitInput 
+                  [matAutocomplete]="auto"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  (matChipInputTokenEnd)="add($event)">
+              </mat-chip-list>
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                <mat-option *ngFor="let fruit of allReferentiel"  [value]="fruit.id">
+                  {{fruit.libelle}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          
+                  <div>
+                    <p>
+                      <mat-form-field>
+                      <ngx-mat-file-input (change)="selectedAvatar($event.target.files)" formControlName="avatar" name="avatar" ngModel #avatar placeholder="avatar" ></ngx-mat-file-input>
+                      <mat-icon matSuffix>folder</mat-icon>
+                      </mat-form-field>
+                      </p>
+                  </div>
+                  
+                      <mat-label>Date de Début</mat-label>  
+                  <mat-form-field>
+                      <input matInput formControlName="date_debut" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>  
+                  </mat-form-field>
+                  
+                  <mat-label>Date de Fin</mat-label>
+          
+                  <mat-form-field>
+                      <input matInput formControlName="date_fin" [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>  
+                  </mat-form-field>
+                  
+              </form>
+              
+        
+        
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext >Next</button>
+            </div>
+          </mat-step>
+        
+          <mat-step >
+          
+              <ng-template matStepLabel>Etape 4</ng-template>
+              <form [formGroup]="FormPromo"> 
+              <mat-form-field class="example-chip-list">
+                <mat-label>Ajout d' apprenants</mat-label>
+                <mat-chip-list #chipList aria-label="Email">
+                  <mat-chip
+                    *ngFor="let email of emails"
+                    [selectable]="selectable"
+                    [removable]="removable"
+                    (removed)="remove(emails)">
+                    {{email}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
+                  <input
+                  formControlName="apprenant"
+                    placeholder="Apprenant"
+                    #fruitInput
+                    [formControl]="fruitCtrl"
+                    [matAutocomplete]="auto"
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let email of filteredemails | async" [value]="email">
+                    {{email}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+        
+              <div>
+                <p>
+                  <mat-form-field>
+                  <ngx-mat-file-input (change)="selectedFile($event.target.files)" formControlName="file" name="file" ngModel #file placeholder="file" ></ngx-mat-file-input>
+                  <mat-icon matSuffix>folder</mat-icon>
+                  </mat-form-field>
+                  </p>
+              </div>
+                
+              <div class="col-lg-6 login-btm login-button">
+                <button style="color:white;background-color:#000080;margin: auto;position: relative;margin-left:600px" (click)="addPromo(FormPromo)" type="submit" class="btn btn-outline-primary">SUBMIT</button>
+              </div>
+        
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext (click)="stepper.reset()">Reset</button>
+              </div>
+            </form>
+          </mat-step>
+        
+        
+        </mat-horizontal-stepper>
+        </div>
+        
+        
+            
+          
+            
+
+  </div>
+   </div>
+
+</div>
+<router-outlet></router-outlet>
+
