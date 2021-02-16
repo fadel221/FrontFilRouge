@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './components/user/add-user/add-user.component';
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
@@ -99,9 +99,12 @@ import { FilterSearchPipe } from './pipes/filter-search.pipe';
     MatButtonToggleModule,
     HttpClientModule,
     PdfViewerModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [RequestInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -22,6 +22,7 @@ import {MatPaginatorModule } from '@angular/material/paginator';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MatSortModule } from '@angular/material/sort';
 import {  MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 const MaterialComponents=
 [
   MatButtonModule,
@@ -32,18 +33,19 @@ const MaterialComponents=
   MatSidenavModule,
   MatTableModule,
   MatDialogModule,
-  //FlexLayoutModule,
   MatCheckboxModule,
   MatMenuModule,
   MatExpansionModule,
   MatListModule,
   MatChipsModule,
   MatTabsModule,
-  //MaterialFileInputModule,
+  MaterialFileInputModule,
   MatAutocompleteModule,
   MatDatepickerModule,
   MatNativeDateModule,
   MatStepperModule,
+  MatPaginatorModule,
+  MatSortModule,
   MatPaginatorModule,
   MatSortModule,
   MatProgressSpinnerModule

@@ -96,6 +96,7 @@ export class AddReferentielComponent implements OnInit {
 
   addReferentiel(form:FormGroup)
   {
+    
     console.log(form)
     const formdata=new FormData();
     formdata.append('libelle',form.get('libelle')?.value)
@@ -103,9 +104,10 @@ export class AddReferentielComponent implements OnInit {
     formdata.append('critereAdmission',form.get('critereAdmission')?.value)
     formdata.append('critereEvaluation',form.get('critereEvaluation')?.value)
     formdata.append('presentation',this.presentation,this.presentation.name)
-    for (let x in this.fruits)
+    
+    for (let i=0;i<this.fruits.length;i++)
     {
-      formdata.append('groupecompetence_array[]',x)
+      formdata.append('groupecompetence_array[]',this.fruits[i])
     }
     console.log(this.fruits)
     this.ref_service.addReferentiel(formdata).subscribe(
