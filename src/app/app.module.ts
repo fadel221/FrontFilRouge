@@ -48,6 +48,8 @@ import { DetailsUserComponent } from './components/user/details-user/details-use
 import { DetailsProfilComponent } from './components/profils/details-profil/details-profil.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FilterSearchPipe } from './pipes/filter-search.pipe';
+import { DropExistPipe } from './pipes/drop-exist.pipe';
+import { FilterByRecentPipe } from './pipes/filter-by-recent.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +88,9 @@ import { FilterSearchPipe } from './pipes/filter-search.pipe';
     DetailsGroupecompetencesComponent,
     DetailsUserComponent,
     DetailsProfilComponent,
-    FilterSearchPipe
+    FilterSearchPipe,
+    DropExistPipe,
+    FilterByRecentPipe
   ],
   imports: [
     BrowserModule,

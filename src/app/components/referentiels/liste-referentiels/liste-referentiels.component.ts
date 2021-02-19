@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import  $  from 'jquery';
 import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ReferentielService } from 'src/app/Services/referentiel.service';
 import { ToolsService } from 'src/app/Services/tools.service';
@@ -41,6 +42,10 @@ export class ListeReferentielsComponent implements OnInit {
     console.log(id)
     this._router.navigate(['/home/referentiels/detail/'+id])
   }
+  update(id:any)
+  {
+    this._router.navigate(['/home/referentiels/update/'+id])
+  }
 
   archive(referentielId:any)
   {
@@ -58,6 +63,16 @@ export class ListeReferentielsComponent implements OnInit {
   logout()
   {
     this.conn.logout()
+  }
+
+  loadByScrol()
+  {
+    $('#content-scroll').scroll(()=>{
+      alert('ok')
+    })
+    
+      
+  
   }
 
 }

@@ -20,6 +20,10 @@ import { DetailsUserComponent } from './components/user/details-user/details-use
 import { ListUserComponent } from './components/user/list-user/list-user.component';
 import { AddCompetenceComponent } from './components/competences/add-competence/add-competence.component';
 import { EditUserComponent } from './components/user/edit-user/edit-user.component';
+import { UpdateReferentielComponent } from './components/referentiels/update-referentiel/update-referentiel.component';
+import { UpdateCompetenceComponent } from './components/competences/update-competence/update-competence.component';
+import { AddGrpecompetenceComponent } from './components/groupecompetences/add-grpecompetence/add-grpecompetence.component';
+import { UpdateGrpecompetenceComponent } from './components/groupecompetences/update-grpecompetence/update-grpecompetence.component';
 
 const routes: Routes = [
   {
@@ -86,7 +90,10 @@ const routes: Routes = [
             path:'detail/:id',component:DetailReferentielComponent,canActivate:[AuthGuard]
           },
           {
-            path:'add',component:AddReferentielComponent
+            path:'add',component:AddReferentielComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:'update/:id', component:UpdateReferentielComponent,canActivate:[AuthGuard]
           }
         ]
       },
@@ -97,8 +104,14 @@ const routes: Routes = [
             path:'',component:ListeGrpecompetenceComponent,canActivate:[AuthGuard]
           },
           {
+            path:'add', component:AddGrpecompetenceComponent,canActivate:[AuthGuard]
+          },
+          {
             path:'details/:id',component:DetailsGroupecompetencesComponent,canActivate:[AuthGuard]
           },
+          {
+            path:'update/:id',component:UpdateGrpecompetenceComponent
+          }
 
         ]
       },
@@ -110,6 +123,9 @@ const routes: Routes = [
           },
           {
             path:'add', component:AddCompetenceComponent,canActivate:[AuthGuard]
+          },
+          {
+            path:"update/:id",component:UpdateCompetenceComponent,canActivate:[AuthGuard]
           }
           
         ]

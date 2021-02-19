@@ -29,4 +29,6 @@ export class ToolsService {
       return Data
     return Data.filter(data=>data.libelle.toLowerCase().includes(searchValue.toLowerCase()))
   }
+
+  
 }

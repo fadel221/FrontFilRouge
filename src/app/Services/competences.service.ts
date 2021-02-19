@@ -29,6 +29,21 @@ export class CompetencesService {
     );
       return competence;
   }
+  
+  getCompetenceById(id:any,data:any)
+  {
+    const competence: any = data.find(
+     (g:any) => {
+       
+       return g.id===id;
+     } 
+    );
+      return competence;
+  }
 
+  UpdateCompetence(data:any,id:any)
+  {
+    return this._httpClient.put(environment.url+'admin/competences/'+id,data)
+  }
   
 }

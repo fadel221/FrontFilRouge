@@ -31,6 +31,7 @@
     "material-icons": "^0.5.2",
     "ng2-pdf-viewer": "^6.3.2",
     "ngx-material-file-input": "^2.1.1",
+    "ngx-select-dropdown": "^1.5.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

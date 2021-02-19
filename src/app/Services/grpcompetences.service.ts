@@ -42,6 +42,11 @@ export class GrpcompetencesService {
       return groupecompetence;
   }
 
+  updateGroupecompetence(data:any,id:any)
+  {
+    return this._httpClient.put(environment.url+"admin/groupecompetences/"+id+"?isDeleted=false",data);
+  }
+
   archiveGrpecompetence(id:any)
   {
     return this._httpClient.delete(environment.url+"admin/groupecompetences/"+id)

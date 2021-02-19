@@ -31,6 +31,7 @@ export class DetailsGroupecompetencesComponent implements OnInit {
         let id=Number(this.route.snapshot.paramMap.get('id'));
         this.data=response["hydra:member"];
         this.data=this.service.getGrpecompetenceById(id,this.data)
+        console.log(this.data)
       }
     )
     }

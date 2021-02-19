@@ -44,6 +44,11 @@ export class ListeGrpecompetenceComponent implements OnInit {
     this._router.navigate(['/home/groupecompetences/details/'+data])
   }
 
+  headerUpdate(data:any)
+  {
+    this._router.navigate(['/home/groupecompetences/update/'+data])
+  }
+
   archive(id:any)
   {
     this.service.archiveGrpecompetence(id).subscribe(

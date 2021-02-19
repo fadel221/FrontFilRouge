@@ -14,7 +14,6 @@ export class AddCompetenceComponent implements OnInit {
 
   constructor(private conn:ConnexionService,private service:ToolsService,private _grpservice:GrpcompetencesService,private fb:FormBuilder,private _competenceserv:CompetencesService) { }
   panelOpenState = false;
-  profilsortie=['Dev web','Digital Mark','Data Artisan','Web Designer','kf','&r','fkel','fr']
   showSpinner=false;
   ShowData=true;
   groupecmps:any;

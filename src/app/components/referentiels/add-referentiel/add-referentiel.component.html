@@ -97,7 +97,7 @@
           </mat-form-field>
           
           <mat-form-field class="example-chip-list">
-            <mat-label>Favorite Fruits</mat-label>
+            <mat-label>Groupe de Competences</mat-label>
             <mat-chip-list #chipList aria-label="Fruit selection">
               <mat-chip *ngFor="let fruit of fruits" [selectable]="true"
                        [removable]="true" (removed)="remove(fruit)" value={{fruit.id}}>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import $ from 'jquery';
 import { ConnexionService } from 'src/app/Services/connexion.service';
 import { ToolsService } from 'src/app/Services/tools.service';
 import { UserService } from 'src/app/Services/user.service';

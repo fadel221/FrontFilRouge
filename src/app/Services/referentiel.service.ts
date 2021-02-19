@@ -19,9 +19,9 @@ export class ReferentielService {
     return this.Httpclient.post(environment.url+"admin/referentiels",data);
   }
 
-  updateReferentiel(data:any)
+  updateReferentiel(data:any,id:any)
   {
-    return this.Httpclient.put(environment.url+"admin/referentiels/"+data.id,data);
+    return this.Httpclient.post(environment.url+"admin/referentiels/"+id,data);
   }
 
   archiveReferentiel(id:any)
